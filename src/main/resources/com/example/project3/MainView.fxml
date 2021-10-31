@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payroll.SampleController">
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Employee Management">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="470.0">
+                            <children>
+                                <RadioButton fx:id="csID" layoutX="200.0" layoutY="78.0" mnemonicParsing="false" text="CS">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="dep" />
+                                    </toggleGroup></RadioButton>
+                                <RadioButton fx:id="itID" layoutX="307.0" layoutY="78.0" mnemonicParsing="false" text="IT" toggleGroup="$dep" />
+                                <RadioButton fx:id="eceID" layoutX="399.0" layoutY="78.0" mnemonicParsing="false" text="ECE" toggleGroup="$dep" />
+                                <Text layoutX="71.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.803401947021484" />
+                                <Text layoutX="75.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" />
+                                <TextField fx:id="name" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" />
+                                <Text layoutX="78.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Hired" />
+                                <RadioButton fx:id="FullTimeID" layoutX="72.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#fullClick" text="Full Time">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="empType" />
+                                    </toggleGroup></RadioButton>
+                                <RadioButton fx:id="PartTimeID" layoutX="218.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#partClick" text="Part Time" toggleGroup="$empType" />
+                                <RadioButton fx:id="ManagementID" layoutX="365.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#mgmtClick" text="Management" toggleGroup="$empType" />
+                                <Text layoutX="71.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Salary" />
+                                <TextField fx:id="annSal" layoutX="200.0" layoutY="227.0" prefHeight="25.0" prefWidth="219.0" />
+                                <Text layoutX="69.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours Worked" />
+                                <TextField fx:id="hrsWorked" layoutX="199.0" layoutY="287.0" prefHeight="25.0" prefWidth="71.0" />
+                                <Text layoutX="290.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate" />
+                                <TextField fx:id="rate" layoutX="345.0" layoutY="287.0" prefHeight="25.0" prefWidth="75.0" />
+                                <RadioButton fx:id="managerID" layoutX="50.0" layoutY="346.0" mnemonicParsing="false" text="Manager">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="mgmtType" />
+                                    </toggleGroup></RadioButton>
+                                <RadioButton fx:id="depheadID" layoutX="171.0" layoutY="346.0" mnemonicParsing="false" text="Department Head" toggleGroup="$mgmtType" />
+                                <RadioButton fx:id="directorID" layoutX="365.0" layoutY="346.0" mnemonicParsing="false" text="Director" toggleGroup="$mgmtType" />
+                                <Button fx:id="addButton" layoutX="51.0" layoutY="386.0" mnemonicParsing="false" onAction="#add" text="Add Employee" />
+                                <Button fx:id="removeButton" layoutX="231.0" layoutY="386.0" mnemonicParsing="false" onAction="#remove" text="Remove Employee" />
+                                <Button fx:id="sethrButton" layoutX="465.0" layoutY="386.0" mnemonicParsing="false" onAction="#setHours" text="Set Hours" />
+                                <TextArea fx:id="messageArea1" layoutX="-1.0" layoutY="435.0" prefHeight="213.0" prefWidth="600.0" />
+                                <DatePicker fx:id="dateHired" layoutX="199.0" layoutY="132.0" prefHeight="25.0" prefWidth="218.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Employee Database">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Text layoutX="131.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT COMMAND FROM THE MENU" wrappingWidth="337.99017333984375">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Button fx:id="printEmp" layoutX="198.0" layoutY="91.0" mnemonicParsing="false" onAction="#print" text="PRINT EMPLOYEES" />
+                                <Button fx:id="paymentCalc" layoutX="415.0" layoutY="117.0" mnemonicParsing="false" onAction="#calculatePayment" text="CALCULATE " />
+                                <TextArea fx:id="messageArea2" layoutX="-2.0" layoutY="285.0" prefHeight="287.0" prefWidth="606.0" />
+                                <Button fx:id="printDep" layoutX="211.0" layoutY="158.0" mnemonicParsing="false" onAction="#printByDept" text="PRINT BY DEP" />
+                                <Button fx:id="printDate" layoutX="207.0" layoutY="234.0" mnemonicParsing="false" onAction="#printByDate" text="PRINT BY DATE" />
+                                <Button fx:id="importButton" layoutX="52.0" layoutY="117.0" mnemonicParsing="false" onAction="#importFile" text="IMPORT" />
+                                <Button fx:id="exportButton" layoutX="52.0" layoutY="200.0" mnemonicParsing="false" onAction="#exportFile" text="EXPORT" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
