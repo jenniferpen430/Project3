@@ -27,7 +27,7 @@ public class MainController {
     Student student = new Student();
 
     @FXML
-    private TextField name;
+    private TextField Name;
 
     @FXML
     private DatePicker dateHired;
@@ -36,7 +36,7 @@ public class MainController {
     private TextField annSal;
 
     @FXML
-    private TextField hrsWorked;
+    private TextField Credits;
 
     @FXML
     private TextField rate;
@@ -78,7 +78,7 @@ public class MainController {
     private ToggleGroup dep, empType, mgmtType;
 
     @FXML
-    private RadioButton csID, itID, eceID, FullTimeID, PartTimeID, ManagementID,
+    private RadioButton CS, IT, ECE, MEC, FullTimeID, PartTimeID, ManagementID,
             managerID, depheadID, directorID;
 
     @FXML
@@ -88,7 +88,8 @@ public class MainController {
      */
     void add(ActionEvent event) {
         try {
-            String emp = name.getText();
+            String emp = Name.getText();
+            Roster roster = new Roster();
             String[] dateSplit = dateHired.getValue().toString().split("-");
             String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
             Date dateObj = new Date(formattedDate);
@@ -103,10 +104,10 @@ public class MainController {
                     String annualSal = annSal.getText();
                     double annSalary = Double.parseDouble(annualSal);
                     Fulltime fulltime = new Fulltime(profile, annSalary);
-                    if(company.add(fulltime)) {
-                        messageArea1.appendText("Employee added! \n");
+                    if(roster.add(fulltime)) {
+                        messageArea1.appendText("Student added! \n");
                     } else {
-                        messageArea1.appendText("Employee already exists! \n");
+                        messageArea1.appendText("Student already exists! \n");
                     }
 
                 } else if (employeeType.contentEquals("Management")) {
