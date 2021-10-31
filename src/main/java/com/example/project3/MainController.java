@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  */
 
 public class MainController {
-    Student student = new Student();
+    Roster roster = new Roster();
 
     @FXML
     private TextField Name;
@@ -75,7 +75,7 @@ public class MainController {
     private TextArea messageArea2;
 
     @FXML
-    private ToggleGroup dep, empType, mgmtType;
+    private ToggleGroup major, empType, mgmtType;
 
     @FXML
     private RadioButton CS, IT, ECE, MEC, FullTimeID, PartTimeID, ManagementID,
@@ -88,14 +88,15 @@ public class MainController {
      */
     void add(ActionEvent event) {
         try {
-            String emp = Name.getText();
-            Roster roster = new Roster();
-            String[] dateSplit = dateHired.getValue().toString().split("-");
-            String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
-            Date dateObj = new Date(formattedDate);
-            RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
-            String dept = selectDep.getText();
-            Profile profile = new Profile(emp, dept, formattedDate);
+            String nameText = Name.getText();
+//            String[] dateSplit = dateHired.getValue().toString().split("-");
+//            String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
+//            Date dateObj = new Date(formattedDate);
+
+            RadioButton major = (RadioButton) major.getSelectedToggle();
+            RadioButton status = (RadioButton) major.getSelectedToggle();
+            String credits = selectDep.getText();
+            Profile profile = new Profile(nameText, dept, formattedDate);
             RadioButton selectEmp = (RadioButton) empType.getSelectedToggle();
             String employeeType = selectEmp.getText();
 
