@@ -1,5 +1,7 @@
+package com.example.project3;
+
 /**
- * The Major enum class stores the value of each major that the students that are passed into
+ * The com.example.project3.Major enum class stores the value of each major that the students that are passed into
  * the roster could be.
  * @author Adams, Jennifer
  */

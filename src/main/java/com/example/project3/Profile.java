@@ -1,5 +1,7 @@
+package com.example.project3;
+
 /**
- * Profile class holds the identifiable information for each Student; namely their name and major, as well as related
+ * com.example.project3.Profile class holds the identifiable information for each com.example.project3.Student; namely their name and major, as well as related
  * operations.
  * @author Adams, Jennifer
  */
@@ -9,10 +11,10 @@ public class Profile {
     private Major major; //5 majors and 2-character each: CS, IT, BA, EE, ME
 
     /**
-     * Constructor for the Profile class, converts inputted String representation of a major, converts it, and stores
+     * Constructor for the com.example.project3.Profile class, converts inputted String representation of a major, converts it, and stores
      * the given name and major.
-     * @param name name of new Profile
-     * @param major major of new Profile
+     * @param name name of new com.example.project3.Profile
+     * @param major major of new com.example.project3.Profile
      */
     public Profile(String name, String major){
         Major majorAsEnum = Major.valueOf(major);
@@ -21,7 +23,7 @@ public class Profile {
     }
 
     /**
-     * Returns the name related to this instance of Profile
+     * Returns the name related to this instance of com.example.project3.Profile
      * @return
      */
     public String getName() {
@@ -30,7 +32,7 @@ public class Profile {
 
 
     /**
-     * Determines the equivalence between two instances of Profile
+     * Determines the equivalence between two instances of com.example.project3.Profile
      * @param obj object to be compared
      * @return
      */
@@ -47,7 +49,7 @@ public class Profile {
     }
 
     /**
-     * Returns string representation of the Major instance
+     * Returns string representation of the com.example.project3.Major instance
      * @return
      */
     @Override
