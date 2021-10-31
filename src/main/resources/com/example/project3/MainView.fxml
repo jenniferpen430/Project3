@@ -70,11 +70,14 @@
                             <children>
                                 <TextArea fx:id="messageArea2" layoutX="-2.0" layoutY="285.0" prefHeight="287.0" prefWidth="606.0" />
                                 <DatePicker fx:id="dateHired" layoutX="165.0" layoutY="154.0" prefHeight="25.0" prefWidth="218.0" />
-                        <RadioButton layoutX="161.0" layoutY="75.0" mnemonicParsing="false" text="CS" />
-                        <RadioButton layoutX="212.0" layoutY="75.0" mnemonicParsing="false" text="EE" />
-                        <RadioButton layoutX="255.0" layoutY="75.0" mnemonicParsing="false" text="ME" />
-                        <RadioButton layoutX="298.0" layoutY="75.0" mnemonicParsing="false" text="IT" />
-                        <RadioButton layoutX="341.0" layoutY="75.0" mnemonicParsing="false" text="BA" />
+                        <RadioButton fx:id="csIDpayment" layoutX="161.0" layoutY="75.0" mnemonicParsing="false" text="CS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="majorsPayment" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="eeIDpayment" layoutX="212.0" layoutY="75.0" mnemonicParsing="false" text="EE" toggleGroup="$majorsPayment" />
+                        <RadioButton fx:id="meIDpayment" layoutX="255.0" layoutY="75.0" mnemonicParsing="false" text="ME" toggleGroup="$majorsPayment" />
+                        <RadioButton fx:id="itIDpayment" layoutX="298.0" layoutY="75.0" mnemonicParsing="false" text="IT" toggleGroup="$majorsPayment" />
+                        <RadioButton fx:id="baIDpayment" layoutX="341.0" layoutY="75.0" mnemonicParsing="false" text="BA" toggleGroup="$majorsPayment" />
                         <TextField layoutX="154.0" layoutY="32.0" prefHeight="25.0" prefWidth="235.0" text="Enter student name here..." />
                         <TextField layoutX="165.0" layoutY="109.0" prefHeight="25.0" prefWidth="219.0" text="0.00" />
                         <Label layoutX="40.0" layoutY="36.0" text="Student Name:" />
