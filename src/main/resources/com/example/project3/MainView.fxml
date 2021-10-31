@@ -30,7 +30,7 @@
                                 <Text layoutX="71.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.803401947021484" />
                                 <Text layoutX="75.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" />
                                 <TextField fx:id="name" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" />
-                                <Text layoutX="78.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Hired" />
+                                <Text layoutX="78.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="com.example.project3.Date Hired" />
                                 <RadioButton fx:id="FullTimeID" layoutX="72.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#fullClick" text="Full Time">
                                     <toggleGroup>
                                         <ToggleGroup fx:id="empType" />

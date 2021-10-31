@@ -1,8 +1,10 @@
+package com.example.project3;
+
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
 /**
- The Date class stores the day, month, and year from the user input and makes
+ The com.example.project3.Date class stores the day, month, and year from the user input and makes
  sure a date is valid.
  @author Adams, Jennifer
  */
@@ -34,7 +36,7 @@ public class Date implements Comparable<Date> {
     public static final int DAY_MIN = 1;
 
     /**
-     This method is to construct the Date object from the user input string.
+     This method is to construct the com.example.project3.Date object from the user input string.
      The day, month, and year is separated by using the String tokenizer.
      @param String of date from user input
      */
@@ -48,7 +50,7 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     This method creates a Date object with today’s date with an instance of
+     This method creates a com.example.project3.Date object with today’s date with an instance of
      the Calender class
      */
     public Date(){

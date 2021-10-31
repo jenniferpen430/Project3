@@ -1,9 +1,13 @@
+package com.example.project3;
+import com.example.project3.Profile;
+import com.example.project3.Student;
+
 /**
  * NonResident is a subclass of Student that contains the common data fields and operations for International and
  * TriState Students.
  */
 
-public class NonResident extends Student{
+public class NonResident extends Student {
 
     //NonResident Per Credit Fee
     private double N_P_FEE = 966;

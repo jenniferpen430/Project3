@@ -1,5 +1,4 @@
 package com.example.project3;
-
 import java.io.File;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -154,7 +153,7 @@ public class MainController {
                     }
                 }
             } else {
-                messageArea1.appendText("Invalid Date! \n");
+                messageArea1.appendText("Invalid com.example.project3.Date! \n");
             }
         }
         catch (Exception e) {

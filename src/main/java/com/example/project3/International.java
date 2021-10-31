@@ -1,6 +1,8 @@
+package com.example.project3;
+
 /**
- * International is a subclass of NonResident and contains the necessary data fields and operations for objects of
- * the International type.
+ * com.example.project3.International is a subclass of com.example.project3.InternationalTest.NonResident and contains the necessary data fields and operations for objects of
+ * the com.example.project3.International type.
  * @author Adams, Jennifer
  */
 
@@ -9,11 +11,11 @@ public class International extends NonResident {
     private double ADDITIONAL_FEE = 2650;
 
     /**
-     * Constructor for the International class; sets study abroad boolean to be whatever is passed aside from the
-     * Profile and credit load.
-     * @param profile profile of the International student to be added
-     * @param credit credit load of the International student to be added
-     * @param studyAbroad study abroad status of the International student to be added
+     * Constructor for the com.example.project3.International class; sets study abroad boolean to be whatever is passed aside from the
+     * com.example.project3.Profile and credit load.
+     * @param profile profile of the com.example.project3.International student to be added
+     * @param credit credit load of the com.example.project3.International student to be added
+     * @param studyAbroad study abroad status of the com.example.project3.International student to be added
      */
     public International(Profile profile, int credit, boolean studyAbroad){
         super(profile, credit);
@@ -21,7 +23,7 @@ public class International extends NonResident {
     }
 
     /**
-     * Sets studyAbroad status of an object of the International type to be whatever is passed.
+     * Sets studyAbroad status of an object of the com.example.project3.International type to be whatever is passed.
      * @param studyAbroad studyAbroad status update
      */
     public void setStudyAbroad(boolean studyAbroad){
@@ -46,7 +48,7 @@ public class International extends NonResident {
     }
 
     /**
-     * Returns full string representation of the International object.
+     * Returns full string representation of the com.example.project3.International object.
      * @return
      */
     @Override
