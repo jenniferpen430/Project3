@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.MouseEvent;
 
 import javafx.stage.Stage;
 
@@ -536,28 +537,24 @@ public class MainController {
      Event Handler for the print button
      @param event
      */
-    String print(ActionEvent event) {
+    void print(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
             messageArea3.appendText("Printing student roster \n");
             messageArea3.appendText(roster.print());
         } else {
             messageArea3.appendText("Student roster is empty. \n");
         }
-
-        return roster.print();
     }
 
     @FXML
-    String printByName(ActionEvent event){
+    void printByName(ActionEvent event){
         if(roster.getNumStudents() > 0) {
-            messageArea3.appendText("--Printing student roster by name-- \n");
+            messageArea3.appendText("**Printing student roster by name** \n");
             String printName = roster.printByName();
             messageArea3.appendText(printName);
         } else {
             messageArea3.appendText("student roster is empty.\n");
         }
-
-        return roster.printByName();
     }
 
 
@@ -566,7 +563,7 @@ public class MainController {
      Event Handler for the print by date button
      @param event
      */
-    String printByDate(ActionEvent event) {
+    void printByDate(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
             messageArea3.appendText("--Printing student roster by payment date-- \n");
             String printDate = roster.printByDate();
@@ -574,7 +571,6 @@ public class MainController {
         } else {
             messageArea3.appendText("student roster is empty.\n");
         }
-
-        return roster.printByDate();
     }
+
 }
