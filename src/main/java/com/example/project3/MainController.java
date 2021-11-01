@@ -1,16 +1,12 @@
 package com.example.project3;
 import java.io.File;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -27,16 +23,16 @@ public class MainController {
     Roster roster = new Roster();
 
     @FXML
-    private TextField Name;
+    private TextField name;
 
     @FXML
     private DatePicker dateHired;
 
     @FXML
-    private TextField annSal;
+    private TextField tuition;
 
     @FXML
-    private TextField Credits;
+    private TextField creditHours;
 
     @FXML
     private TextField rate;
@@ -44,12 +40,15 @@ public class MainController {
     @FXML
     private Button addButton;
 
+
     @FXML
     private Button removeButton;
 
     @FXML
     private Button printEmp;
 
+    @FXML
+    private CheckBox studyabroad;
     @FXML
     private Button printDep;
 
@@ -75,91 +74,114 @@ public class MainController {
     private TextArea messageArea2;
 
     @FXML
-    private ToggleGroup major, empType, mgmtType;
+    private ToggleGroup majors, state, location, status;
 
     @FXML
-    private RadioButton CS, IT, ECE, MEC, FullTimeID, PartTimeID, ManagementID,
-            managerID, depheadID, directorID;
+    private RadioButton csID, itID, eceID, meID, baID, NYID, ctID, ManagementID,
+            internationalID, nonresidentID;
 
     @FXML
+     public boolean dataChecker(){
+        String nameText = name.getText();
+        RadioButton major = (RadioButton) majors.getSelectedToggle();
+
+        if(nameText == null){
+            messageArea1.appendText("Missing name");
+            return false;
+        }
+        if(major.getText() == null){
+            messageArea1.appendText("Missing major");
+            return false;
+        }
+        RadioButton locations = (RadioButton) location.getSelectedToggle();
+        String locationText = locations.getText();
+
+        RadioButton resOrNr = (RadioButton) status.getSelectedToggle();
+        String statusText = resOrNr.getText();
+        if(locationText.equals("Tristate")) {
+            RadioButton states = (RadioButton) state.getSelectedToggle();
+            String stateText = states.getText();
+            TriState ts = new TriState(profile,credits, stateText);
+            if (roster.add(ts)) {
+                messageArea1.appendText("Student added! \n");
+            } else {
+                messageArea1.appendText("Student already exists! \n");
+            }
+        }
+
+        try{
+            int credits = Integer.parseInt(creditHours.getText());
+            if(credits == 0){
+                messageArea1.appendText("Credit cannot be 0");
+                return false;
+            }
+            if(credits < 0 ){
+                messageArea1.appendText("Credit cannot be negative");
+                return false;
+            }
+        }
+        catch (InputMismatchException e){
+            messageArea1.appendText("Input must be an integer");
+            return false;
+        }
+
+    }
+
     /**
      * Event Handler for the add button
      * @param event
      */
     void add(ActionEvent event) {
-        try {
-            String nameText = Name.getText();
-//            String[] dateSplit = dateHired.getValue().toString().split("-");
-//            String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
-//            Date dateObj = new Date(formattedDate);
+        if(dataChecker()){
+            String nameText = name.getText();
+            RadioButton major = (RadioButton) majors.getSelectedToggle();
+            String dept = major.getText();
+            Profile profile = new Profile(nameText, dept);
+            RadioButton resOrNr = (RadioButton) status.getSelectedToggle();
+            String statusText = resOrNr.getText();
+            int credits = Integer.parseInt(creditHours.getText());
 
-            RadioButton major = (RadioButton) major.getSelectedToggle();
-            RadioButton status = (RadioButton) major.getSelectedToggle();
-            String credits = selectDep.getText();
-            Profile profile = new Profile(nameText, dept, formattedDate);
-            RadioButton selectEmp = (RadioButton) empType.getSelectedToggle();
-            String employeeType = selectEmp.getText();
-
-            if(dateObj.isValid()) {
-                if(employeeType.equals("Full Time")) {
-                    String annualSal = annSal.getText();
-                    double annSalary = Double.parseDouble(annualSal);
-                    Fulltime fulltime = new Fulltime(profile, annSalary);
-                    if(roster.add(fulltime)) {
+            if(statusText.equals("Resident")) {
+                Resident resident = new Resident(profile, credits);
+                if (roster.add(resident)) {
+                    messageArea1.appendText("Student added! \n");
+                } else {
+                    messageArea1.appendText("Student already exists! \n");
+                }
+            }
+            else if(statusText.equals("NonResident")){
+                RadioButton locations = (RadioButton) location.getSelectedToggle();
+                String locationText = locations.getText();
+                if(locationText == null){
+                    NonResident nr = new NonResident(profile,credits);
+                    if (roster.add(nr)) {
                         messageArea1.appendText("Student added! \n");
                     } else {
                         messageArea1.appendText("Student already exists! \n");
                     }
-
-                } else if (employeeType.contentEquals("Management")) {
-                    String annualSal = annSal.getText();
-                    double annSalary = Double.parseDouble(annualSal);
-                    RadioButton selectMgmt = (RadioButton) mgmtType.getSelectedToggle();
-                    String mgmtRole = selectMgmt.getText();
-
-                    if(mgmtRole.contentEquals("Manager")) {
-                        Management management = new Management(profile, annSalary, mgmtRole);
-                        management.setRole("Manager");
-                        if(company.add(management)) {
-                            messageArea1.appendText("Employee added! \n");
-                        } else {
-                            messageArea1.appendText("Employee already exists! \n");
-                        }
-                    }else if(mgmtRole.contentEquals("Department Head")) {
-                        Management management = new Management(profile, annSalary, mgmtRole);
-                        management.setRole("Department Head");
-                        if(company.add(management)) {
-                            messageArea1.appendText("Employee added! \n");
-                        } else {
-                            messageArea1.appendText("Employee already exists! \n");
-                        }
-
-                    }else if(mgmtRole.contentEquals("Director")) {
-                        Management management = new Management(profile, annSalary, mgmtRole);
-                        management.setRole("Director");
-                        if(company.add(management)) {
-                            messageArea1.appendText("Employee added! \n");
-                        } else {
-                            messageArea1.appendText("Employee already exists! \n");
-                        }
-                    }
-
-                } else if (employeeType.contentEquals("Part Time")) {
-                    String ratePHour = rate.getText();
-                    double ratePerHour = Double.parseDouble(ratePHour);
-                    Parttime parttime = new Parttime(profile, ratePerHour);
-                    if(company.add(parttime)) {
-                        messageArea1.appendText("Employee added! \n");
+                } else if(locationText.equals("Tristate")) {
+                    RadioButton states = (RadioButton) state.getSelectedToggle();
+                    String stateText = states.getText();
+                    TriState ts = new TriState(profile,credits, stateText);
+                    if (roster.add(ts)) {
+                        messageArea1.appendText("Student added! \n");
                     } else {
-                        messageArea1.appendText("Employee already exists! \n");
+                        messageArea1.appendText("Student already exists! \n");
+                    }
+                } else if(locationText.equals("International")) {
+                    boolean sa = false;
+                    if(studyabroad.isSelected()){
+                        sa = true;
+                    }
+                    International in = new International(profile, credits, sa);
+                    if (roster.add(in)) {
+                        messageArea1.appendText("Student added! \n");
+                    } else {
+                        messageArea1.appendText("Student already exists! \n");
                     }
                 }
-            } else {
-                messageArea1.appendText("Invalid com.example.project3.Date! \n");
+
             }
-        }
-        catch (Exception e) {
-            messageArea1.appendText("Error. Please recheck inputs! \n");
         }
     }
 
@@ -171,19 +193,17 @@ public class MainController {
     void remove(ActionEvent event) {
         try {
             String emp = name.getText();
-            String[] dateSplit = dateHired.getValue().toString().split("-");
-            String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
-            RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
-            String dept = selectDep.getText();
-            Profile profile = new Profile(emp, dept, formattedDate);
-            Employee employee = new Employee(profile);
-            if(company.remove(employee)) {
-                messageArea1.appendText("Employee removed. \n");
+            RadioButton major = (RadioButton) majors.getSelectedToggle();
+            String majorText = major.getText();
+            Profile profile = new Profile(emp, majorText);
+            Student student = new Student(profile);
+            if(roster.remove(student)) {
+                messageArea1.appendText("Student removed. \n");
             }
-            else if(company.getnumEmployee()==0) {
-                messageArea1.appendText("Employee database is empty. \n");
+            else if(roster.getNumStudents()==0) {
+                messageArea1.appendText("Student database is empty. \n");
             } else {
-                messageArea1.appendText("Employee does not exist. \n");
+                messageArea1.appendText("Student does not exist. \n");
             }
         }
         catch (Exception e) {
@@ -197,8 +217,8 @@ public class MainController {
      @param event
      */
     void calculatePayment(ActionEvent event) {
-        if(company.getnumEmployee() > 0) {
-            company.processPayments();
+        if(roster.getNumStudents() > 0) {
+            roster.calculateTuition();
             messageArea2.appendText("Calculation of employee payments is done \n");
         } else {
             messageArea2.appendText("No employees in database.\n");
@@ -242,33 +262,16 @@ public class MainController {
      @param event
      */
     String print(ActionEvent event) {
-        if(company.getnumEmployee() > 0) {
+        if(roster.getNumStudents() > 0) {
             messageArea2.appendText("--Printing earning statements-- \n");
-            String print = company.print();
-            messageArea2.appendText(print);
+            messageArea2.appendText(roster.print());
         } else {
-            messageArea2.appendText("Employee database is empty. \n");
+            messageArea2.appendText("Student database is empty. \n");
         }
 
-        return company.print();
+        return roster.print();
     }
 
-    @FXML
-    /**
-     Event Handler for the print by dep button
-     @param event
-     */
-    String printByDept(ActionEvent event) {
-        if(company.getnumEmployee() > 0) {
-            messageArea2.appendText("--Printing earning statements by department-- \n");
-            String printDep = company.printByDepartment();
-            messageArea2.appendText(printDep);
-        } else {
-            messageArea2.appendText("Employee database is empty. \n");
-        }
-
-        return company.printByDepartment();
-    }
 
     @FXML
     /**
@@ -276,108 +279,14 @@ public class MainController {
      @param event
      */
     String printByDate(ActionEvent event) {
-        if(company.getnumEmployee() > 0) {
+        if(roster.getNumStudents() > 0) {
             messageArea2.appendText("--Printing earning statements by date hired-- \n");
-            String printDate = company.printByDate();
+            String printDate = roster.printByDate();
             messageArea2.appendText(printDate);
         } else {
             messageArea2.appendText("Employee database is empty.\n");
         }
 
-        return company.printByDate();
+        return roster.printByDate();
     }
-
-    @FXML
-    /**
-     This method imports the database from the file.
-     @param event
-     */
-    void importFile(ActionEvent event) {
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Import File");
-        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"), //**idk wtf this is
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        Stage stage = new Stage();
-
-        try {
-            File file = chooser.showOpenDialog(stage);
-            String filePath = file.getAbsolutePath();
-            String fileName = file.getName();
-            File database = new File(filePath);
-
-            Scanner scanner = new Scanner(database); //**no errors ig
-            String line = scanner.nextLine();
-            while (scanner.hasNextLine()) {
-                StringTokenizer st = new StringTokenizer(line, ",", false);
-                String command = st.nextToken();
-                if (command.equals("P")) { //part-time employee
-                    String name = st.nextToken();
-                    String depCode = st.nextToken();
-                    String date = st.nextToken();
-                    double hourlyRate = Double.parseDouble(st.nextToken());
-                    Profile profile = new Profile(name, depCode, date);
-                    Parttime parttime = new Parttime(profile, hourlyRate);
-                    company.add(parttime);
-                }
-                else if (command.equals("F")) { //full-time employee
-                    String name = st.nextToken();
-                    String depCode = st.nextToken();
-                    String date = st.nextToken();
-                    double annualSalary = Double.parseDouble(st.nextToken());
-                    Fulltime fulltime = new Fulltime(new Profile(name, depCode, date), annualSalary);
-                    company.add(fulltime);
-                }
-                else if(command.equals("M")) { //management
-                    String name = st.nextToken();
-                    String depCode = st.nextToken();
-                    String date = st.nextToken();
-                    double annualSalary = Double.parseDouble(st.nextToken());
-                    int intCode = Integer.parseInt(st.nextToken());
-                    final int MANAGER_CODE = 1;
-                    final int DEPARTMENT_HEAD_CODE = 2;
-                    final int DIRECTOR_CODE = 3;
-                    Management management = null;
-                    if (intCode == MANAGER_CODE) {
-                        management = new Management(new Profile(name, depCode, date), annualSalary, "Manager");
-                    }
-                    else if (intCode == DEPARTMENT_HEAD_CODE) {
-                        management = new Management(new Profile(name, depCode, date), annualSalary, "Department Head");
-                    }
-                    else if (intCode == DIRECTOR_CODE) { //could just do else ig
-                        management = new Management(new Profile(name, depCode, date), annualSalary, "Director");
-                    }
-                    company.add(management);
-                }
-                line = scanner.nextLine();
-            }
-            scanner.close();
-        }
-        catch (Exception e) {
-            messageArea1.appendText("Error. \n");
-        }
-    }
-
-    @FXML
-    /**
-     The method exports the database from the file.
-     @param event
-     */
-    void exportFile(ActionEvent event) {
-        try {
-            FileChooser chooser = new FileChooser();
-            chooser.setTitle("Export File");
-            chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
-                    new ExtensionFilter("All Files", "*.*"));
-            Stage stage = new Stage();
-            File file = chooser.showSaveDialog(stage);
-            String filePath = file.getAbsolutePath();
-            String fileName = file.getName();
-            company.exportDatabase(filePath);
-            messageArea2.appendText("File exported. \n");
-        }
-        catch (Exception e) {
-            messageArea2.appendText("Error. \n");
-        }
-    }
-
 }

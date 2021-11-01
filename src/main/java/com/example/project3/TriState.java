@@ -1,14 +1,11 @@
 package com.example.project3;
 
-import com.example.project3.InternationalTest;
-import com.example.project3.Profile;
-
 /**
  * com.example.project3.TriState is a subclass of com.example.project3.InternationalTest.NonResident and contains the necessary data fields and operations for com.example.project3.TriState students.
  * @author Adams, Jennifer
  */
 
-public class TriState extends InternationalTest.NonResident {
+public class TriState extends NonResident{
 
     private final static int NY_DISCOUNT =  4000;
     private final static int CT_DISCOUNT =  5000;
