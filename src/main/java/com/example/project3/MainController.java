@@ -10,11 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- This class is the main connection to the JavaFX GUI application. The methods written here are to make
- the buttons
-
- functional. Employees are added, removed, hours set, printed, payment calculated, imported,
- and exported through several GUI buttons.
+ This main class is the connection to the JavaFX GUI application.
+ Students  are added, removed, tuition calculation, payments, etc. through several GUI buttons.
  @author jennifer, adams
  */
 
@@ -78,10 +75,7 @@ public class MainController {
     private RadioButton meIDpayment;
 
     @FXML
-    private TextArea messageArea1;
-
-    @FXML
-    private TextArea messageArea2;
+    private TextArea messageArea1, messageArea2, messageArea3;
 
     @FXML
     private TextField name;

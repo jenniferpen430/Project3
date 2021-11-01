@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
@@ -18,7 +19,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(),600,600);
+            BorderPane bp = (BorderPane) fxmlLoader.load();
+            Scene scene = new Scene(bp,600,600);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Tuition Manager");
             primaryStage.show();
