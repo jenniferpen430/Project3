@@ -20,14 +20,14 @@
                                 <RadioButton fx:id="eceID" layoutX="308.0" layoutY="61.0" mnemonicParsing="false" text="EE" toggleGroup="$majors" />
                                 <Text layoutX="71.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.803401947021484" />
                                 <Text layoutX="66.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" />
-                                <TextField fx:id="name" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" />
+                                <TextField fx:id="name" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" promptText="Enter a student name here..." />
                                 <RadioButton fx:id="tristateID" disable="true" layoutX="195.0" layoutY="150.0" mnemonicParsing="false" onAction="#tristateButtonClick" text="Tristate">
                            <toggleGroup>
                               <ToggleGroup fx:id="areaIn" />
                            </toggleGroup></RadioButton>
                                 <RadioButton fx:id="internationalID" disable="true" layoutX="195.0" layoutY="189.0" mnemonicParsing="false" onAction="#internationalButtonClick" prefHeight="18.0" prefWidth="97.0" text="International" toggleGroup="$areaIn" />
                                 <Text layoutX="67.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit Hours" wrappingWidth="82.39453125" />
-                                <TextField fx:id="creditHours" layoutX="198.0" layoutY="260.0" prefHeight="25.0" prefWidth="219.0" />
+                                <TextField fx:id="creditHours" layoutX="198.0" layoutY="260.0" prefHeight="25.0" prefWidth="219.0" promptText="Enter the amount of credit hours" />
                                 <RadioButton fx:id="residentID" layoutX="196.0" layoutY="112.0" mnemonicParsing="false" onAction="#residentButtonClick" text="Resident">
                            <toggleGroup>
                               <ToggleGroup fx:id="status" />
@@ -58,7 +58,7 @@
                         <AnchorPane fx:id="paymentDateID" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <TextArea fx:id="messageArea2" layoutX="-2.0" layoutY="285.0" prefHeight="287.0" prefWidth="606.0" />
-                                <DatePicker fx:id="paymentDate" layoutX="165.0" layoutY="154.0" prefHeight="25.0" prefWidth="218.0" />
+                                <DatePicker fx:id="paymentDate" layoutX="165.0" layoutY="154.0" prefHeight="25.0" prefWidth="218.0" promptText="Enter the payment date..." />
                                 <RadioButton fx:id="csIDpayment" layoutX="161.0" layoutY="75.0" mnemonicParsing="false" text="CS">
                                     <toggleGroup>
                                         <ToggleGroup fx:id="majorsPayment" />
@@ -67,15 +67,15 @@
                                 <RadioButton fx:id="meIDpayment" layoutX="255.0" layoutY="75.0" mnemonicParsing="false" text="ME" toggleGroup="$majorsPayment" />
                                 <RadioButton fx:id="itIDpayment" layoutX="298.0" layoutY="75.0" mnemonicParsing="false" text="IT" toggleGroup="$majorsPayment" />
                                 <RadioButton fx:id="baIDpayment" layoutX="341.0" layoutY="75.0" mnemonicParsing="false" text="BA" toggleGroup="$majorsPayment" />
-                                <TextField layoutX="154.0" layoutY="32.0" prefHeight="25.0" prefWidth="235.0" text="Enter student name here..." />
-                                <TextField fx:id="paymentAmountID" layoutX="165.0" layoutY="109.0" prefHeight="25.0" prefWidth="219.0" text="0.00" />
+                                <TextField layoutX="154.0" layoutY="32.0" prefHeight="25.0" prefWidth="235.0" promptText="Enter a student name here..." />
+                                <TextField fx:id="paymentAmountID" layoutX="165.0" layoutY="109.0" prefHeight="25.0" prefWidth="219.0" promptText="0.00" />
                                 <Label layoutX="40.0" layoutY="36.0" text="Student Name:" />
                                 <Label layoutX="40.0" layoutY="75.0" text="Major:" />
                                 <Label layoutX="40.0" layoutY="113.0" text="Payment Amount:      $" />
                                 <Label layoutX="40.0" layoutY="158.0" text="Payment Date:" />
                                 <Button layoutX="390.0" layoutY="154.0" mnemonicParsing="false" onAction="#pay" text="Pay" />
                                 <Label layoutX="40.0" layoutY="200.0" text="Financial Aid Amount: $" />
-                                <TextField fx:id="finAidID" layoutX="165.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" text="0.00" />
+                                <TextField fx:id="finAidID" layoutX="165.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" promptText="0.00" />
                                 <Button layoutX="391.0" layoutY="196.0" mnemonicParsing="false" onAction="#finaid" text="Set" />
                             </children>
                         </AnchorPane>
