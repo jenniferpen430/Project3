@@ -49,12 +49,12 @@
                         <RadioButton fx:id="meID" layoutX="365.0" layoutY="61.0" mnemonicParsing="false" text="ME" toggleGroup="$majors" />
                         <RadioButton fx:id="baID" layoutX="419.0" layoutY="61.0" mnemonicParsing="false" text="BA" toggleGroup="$majors" />
                         <Text layoutX="67.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" wrappingWidth="82.39453125" />
-                        <RadioButton fx:id="NYID" disable="true" layoutX="301.0" layoutY="150.0" mnemonicParsing="false" onAction="#NYClick" text="New York">
+                        <RadioButton fx:id="NYID" disable="true" layoutX="301.0" layoutY="150.0" mnemonicParsing="false" text="New York">
                            <toggleGroup>
                               <ToggleGroup fx:id="state" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="ctID" disable="true" layoutX="401.0" layoutY="150.0" mnemonicParsing="false" onAction="#CTClick" text="Connecticut" toggleGroup="$state" />
+                        <RadioButton fx:id="ctID" disable="true" layoutX="401.0" layoutY="150.0" mnemonicParsing="false" text="Connecticut" toggleGroup="$state" />
                         <CheckBox fx:id="studyabroad" disable="true" layoutX="306.0" layoutY="190.0" mnemonicParsing="false" text="Study Abroad" />
                         <TextField fx:id="tuition" layoutX="198.0" layoutY="364.0" prefHeight="25.0" prefWidth="219.0" promptText="0.00" />
                         <Text layoutX="67.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuition" wrappingWidth="82.39453125" />
