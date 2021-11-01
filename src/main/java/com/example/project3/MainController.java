@@ -399,9 +399,9 @@ public class MainController {
     void calculatePayment(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
             roster.calculateTuition();
-            messageArea2.appendText("Calculation of employee payments is done \n");
+            messageArea2.appendText("Calculation of student payments is done \n");
         } else {
-            messageArea2.appendText("No employees in database.\n");
+            messageArea2.appendText("No students in database.\n");
         }
     }
 
@@ -451,13 +451,26 @@ public class MainController {
      */
     String print(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
-            messageArea2.appendText("--Printing earning statements-- \n");
+            messageArea2.appendText("Printing student roster \n");
             messageArea2.appendText(roster.print());
         } else {
-            messageArea2.appendText("Student database is empty. \n");
+            messageArea2.appendText("Student roster is empty. \n");
         }
 
         return roster.print();
+    }
+
+    @FXML
+    String printByName(ActionEvent event){
+        if(roster.getNumStudents() > 0) {
+            messageArea2.appendText("--Printing student roster by name-- \n");
+            String printName = roster.printByName();
+            messageArea2.appendText(printName);
+        } else {
+            messageArea2.appendText("student roster is empty.\n");
+        }
+
+        return roster.printByName();
     }
 
 
@@ -468,11 +481,11 @@ public class MainController {
      */
     String printByDate(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
-            messageArea2.appendText("--Printing earning statements by date hired-- \n");
+            messageArea2.appendText("--Printing student roster by payment date-- \n");
             String printDate = roster.printByDate();
             messageArea2.appendText(printDate);
         } else {
-            messageArea2.appendText("student database is empty.\n");
+            messageArea2.appendText("student roster is empty.\n");
         }
 
         return roster.printByDate();

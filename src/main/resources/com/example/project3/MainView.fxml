@@ -85,25 +85,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <MenuBar layoutX="45.0" layoutY="52.0">
-                          <menus>
-                            <Menu mnemonicParsing="false" text="Tuition">
-                              <items>
-                                <MenuItem mnemonicParsing="false" text="Close" />
-                              </items>
-                            </Menu>
-                            <Menu mnemonicParsing="false" text="Print">
-                              <items>
-                                <MenuItem mnemonicParsing="false" text="Delete" />
-                              </items>
-                            </Menu>
-                            <Menu mnemonicParsing="false" text="Help">
-                              <items>
-                                <MenuItem mnemonicParsing="false" text="About" />
-                              </items>
-                            </Menu>
-                          </menus>
-                        </MenuBar>
+                        <Button layoutX="248.0" layoutY="99.0" mnemonicParsing="false" onAction="#calculatePayment" text="Calculate Tuition" />
+                        <Label layoutX="22.0" layoutY="204.0" text="Print Sequence:" />
+                        <Button layoutX="145.0" layoutY="200.0" mnemonicParsing="false" onAction="#print" text="Print Roster" />
+                        <Button layoutX="254.0" layoutY="200.0" mnemonicParsing="false" onAction="#printByName" text="Print by Name" />
+                        <Button layoutX="367.0" layoutY="200.0" mnemonicParsing="false" onAction="#printByDate" text="Print by Date" />
                      </children></AnchorPane>
               </content>
             </Tab>
