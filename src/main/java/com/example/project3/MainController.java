@@ -245,34 +245,6 @@ public class MainController {
         }
     }
 
-    @FXML
-    /**
-     Event Handler for the set hours button
-     @param event
-     */
-    void setHours(ActionEvent event) {
-        try {
-            String emp = name.getText();
-            RadioButton selectDep = (RadioButton) majors.getSelectedToggle();
-            String dept = selectDep.getText();
-            String hours = hrsWorked.getText();
-            double hourss = Double.parseDouble(hours);
-            Profile profile = new Profile(emp, dept);
-            Parttime parttime=new Parttime(profile, 0);
-            parttime.setHours(hourss);
-
-            if(hourss<0) {
-                messageArea1.appendText("Working hours cannot be negative. \n");
-            } else if(hourss>100) {
-                messageArea1.appendText("Invalid Hours: over 100. \n");
-            } else if(company.setHours(parttime)) {
-                messageArea1.appendText("Working hours set. \n");
-            }
-        }
-        catch (Exception e) {
-            messageArea1.appendText("Error! Please recheck input! \n");
-        }
-    }
 
     @FXML
     /**
