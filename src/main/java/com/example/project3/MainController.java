@@ -68,8 +68,7 @@ public class MainController {
     @FXML
     private ToggleGroup majors;
 
-    @FXML
-    private ToggleGroup majorsPayment;
+    @FXML ToggleGroup majorsPayment;
 
     @FXML
     private RadioButton meID;
@@ -181,8 +180,10 @@ public class MainController {
 
     public boolean dataCheckerTab2(){
         String nameText = name.getText();
-        RadioButton major = (RadioButton) majors.getSelectedToggle();
+        RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
         String dept = major.getText();
+        Profile profile = new Profile(nameText,dept);
+        Student student = new Student(profile);
         if(nameText == null){
             messageArea1.appendText("Missing name");
             return false;
@@ -191,7 +192,15 @@ public class MainController {
             messageArea1.appendText("Missing major");
             return false;
         }
-        //
+        if( paymentAmountID < 0 ){
+            return false;
+        }
+        String[] preDate = paymentDate.getValue().toString().split("-");
+        String postDate = preDate[1] + "/" + preDate[2] + "/" + preDate[0];
+        Date paymentDateFinal = new Date(postDate);
+        if( !paymentDateFinal.isValid() ){
+            return false;
+        }
     }
 
     public boolean creditchecker(){

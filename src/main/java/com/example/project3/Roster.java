@@ -161,7 +161,6 @@ public class Roster {
             }
             return result;
         }
-        return "";
     }
 
     /**
