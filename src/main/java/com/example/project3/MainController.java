@@ -120,6 +120,9 @@ public class MainController {
     @FXML
     private TextField tuition;
 
+    @FXML
+    private TextField namePayment;
+
     private boolean calculated;
 
     @FXML
@@ -195,11 +198,11 @@ public class MainController {
      Validates the students in the second tab
      */
     public boolean dataCheckerTab2(){
-        String nameText = name.getText();
-        if(nameText == null || nameText.isEmpty()){
+        if(namePayment.getText() == null || namePayment.getText().isEmpty() ){
             messageArea2.appendText("Missing name \n");
             return false;
         }
+        String nameText = namePayment.getText();
         if(majors.getSelectedToggle() == null ) {
             messageArea2.appendText("Missing major \n");
             return false;
@@ -402,7 +405,7 @@ public class MainController {
      */
     void pay(ActionEvent event){
         if( dataCheckerTab2()){
-            String nameText = name.getText();
+            String nameText = namePayment.getText();
             RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
             String dept = major.getText();
             Profile profile = new Profile(nameText, dept);
@@ -419,7 +422,7 @@ public class MainController {
      @param event
      */
     void finaid(ActionEvent event){
-        String nameText = name.getText();
+        String nameText = namePayment.getText();
         RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
         String dept = major.getText();
         Profile profile = new Profile(nameText, dept);
