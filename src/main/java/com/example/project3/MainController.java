@@ -14,7 +14,9 @@ import javafx.stage.Stage;
 
 /**
  This class is the main connection to the JavaFX GUI application. The methods written here are to make
- the buttons functional. Employees are added, removed, hours set, printed, payment calculated, imported,
+ the buttons
+
+ functional. Employees are added, removed, hours set, printed, payment calculated, imported,
  and exported through several GUI buttons.
  @author jennifer, adams
  */
