@@ -11,6 +11,10 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Menu?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -67,19 +71,26 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Text layoutX="131.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT COMMAND FROM THE MENU" wrappingWidth="337.99017333984375">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Text>
-                                <Button fx:id="printEmp" layoutX="198.0" layoutY="91.0" mnemonicParsing="false" onAction="#print" text="PRINT EMPLOYEES" />
-                                <Button fx:id="paymentCalc" layoutX="415.0" layoutY="117.0" mnemonicParsing="false" onAction="#calculatePayment" text="CALCULATE " />
                                 <TextArea fx:id="messageArea2" layoutX="-2.0" layoutY="285.0" prefHeight="287.0" prefWidth="606.0" />
-                                <Button fx:id="printDep" layoutX="211.0" layoutY="158.0" mnemonicParsing="false" onAction="#printByDept" text="PRINT BY DEP" />
-                                <Button fx:id="printDate" layoutX="207.0" layoutY="234.0" mnemonicParsing="false" onAction="#printByDate" text="PRINT BY DATE" />
-                                <Button fx:id="importButton" layoutX="52.0" layoutY="117.0" mnemonicParsing="false" onAction="#importFile" text="IMPORT" />
-                                <Button fx:id="exportButton" layoutX="52.0" layoutY="200.0" mnemonicParsing="false" onAction="#exportFile" text="EXPORT" />
-                                <DatePicker fx:id="dateHired" layoutX="306.0" layoutY="200.0" prefHeight="25.0" prefWidth="218.0" />
+                                <DatePicker fx:id="dateHired" layoutX="165.0" layoutY="154.0" prefHeight="25.0" prefWidth="218.0" />
+                                <RadioButton fx:id="csIDpayment" layoutX="161.0" layoutY="75.0" mnemonicParsing="false" text="CS">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="majorsPayment" />
+                                    </toggleGroup></RadioButton>
+                                <RadioButton fx:id="eeIDpayment" layoutX="212.0" layoutY="75.0" mnemonicParsing="false" text="EE" toggleGroup="$majorsPayment" />
+                                <RadioButton fx:id="meIDpayment" layoutX="255.0" layoutY="75.0" mnemonicParsing="false" text="ME" toggleGroup="$majorsPayment" />
+                                <RadioButton fx:id="itIDpayment" layoutX="298.0" layoutY="75.0" mnemonicParsing="false" text="IT" toggleGroup="$majorsPayment" />
+                                <RadioButton fx:id="baIDpayment" layoutX="341.0" layoutY="75.0" mnemonicParsing="false" text="BA" toggleGroup="$majorsPayment" />
+                                <TextField layoutX="154.0" layoutY="32.0" prefHeight="25.0" prefWidth="235.0" text="Enter student name here..." />
+                                <TextField layoutX="165.0" layoutY="109.0" prefHeight="25.0" prefWidth="219.0" text="0.00" />
+                                <Label layoutX="40.0" layoutY="36.0" text="Student Name:" />
+                                <Label layoutX="40.0" layoutY="75.0" text="Major:" />
+                                <Label layoutX="40.0" layoutY="113.0" text="Payment Amount:      $" />
+                                <Label layoutX="40.0" layoutY="158.0" text="Payment Date:" />
+                                <Button layoutX="390.0" layoutY="154.0" mnemonicParsing="false" text="Pay" />
+                                <Label layoutX="40.0" layoutY="200.0" text="Financial Aid Amount: $" />
+                                <TextField layoutX="165.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" text="0.00" />
+                                <Button layoutX="391.0" layoutY="196.0" mnemonicParsing="false" text="Set" />
                             </children>
                         </AnchorPane>
                     </content>
