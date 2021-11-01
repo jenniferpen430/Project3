@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payroll.SampleController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payroll.SampleController">
     <center>
         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -13,53 +23,42 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="470.0">
                             <children>
                                 <RadioButton fx:id="csID" layoutX="198.0" layoutY="61.0" mnemonicParsing="false" text="CS">
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="dep" />
-                                    </toggleGroup></RadioButton>
-                                <RadioButton fx:id="itID" layoutX="256.0" layoutY="61.0" mnemonicParsing="false" text="IT" toggleGroup="$dep" />
-                                <RadioButton fx:id="eceID" layoutX="308.0" layoutY="61.0" mnemonicParsing="false" text="ECE" toggleGroup="$dep" />
+                           <toggleGroup>
+                              <ToggleGroup fx:id="majors" />
+                           </toggleGroup></RadioButton>
+                                <RadioButton fx:id="itID" layoutX="256.0" layoutY="61.0" mnemonicParsing="false" text="IT" toggleGroup="$majors" />
+                                <RadioButton fx:id="eceID" layoutX="308.0" layoutY="61.0" mnemonicParsing="false" text="EE" toggleGroup="$majors" />
                                 <Text layoutX="71.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.803401947021484" />
                                 <Text layoutX="66.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" />
                                 <TextField fx:id="name" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" />
-                                <RadioButton fx:id="FullTimeID" layoutX="195.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#fullClick" text="Tristate">
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="empType" />
-                                    </toggleGroup></RadioButton>
-                                <RadioButton fx:id="PartTimeID" layoutX="195.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#partClick" prefHeight="18.0" prefWidth="97.0" text="International" toggleGroup="$empType" />
+                                <RadioButton fx:id="tristateID" layoutX="195.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#fullClick" text="Tristate">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="location" />
+                           </toggleGroup></RadioButton>
+                                <RadioButton fx:id="internationalID" layoutX="195.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#partClick" prefHeight="18.0" prefWidth="97.0" text="International" toggleGroup="$location" />
                                 <Text layoutX="67.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit Hours" wrappingWidth="82.39453125" />
-                                <TextField fx:id="annSal" layoutX="219.0" layoutY="252.0" prefHeight="25.0" prefWidth="219.0" />
-                                <RadioButton fx:id="managerID" layoutX="196.0" layoutY="112.0" mnemonicParsing="false" text="Resident">
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="mgmtType" />
-                                    </toggleGroup></RadioButton>
-                                <RadioButton fx:id="depheadID" layoutX="301.0" layoutY="112.0" mnemonicParsing="false" text="Non Resident" toggleGroup="$mgmtType" />
-                                <Button fx:id="addButton" layoutX="209.0" layoutY="301.0" mnemonicParsing="false" onAction="#add" text="Add Employee" />
+                                <TextField fx:id="credits" layoutX="198.0" layoutY="260.0" prefHeight="25.0" prefWidth="219.0" />
+                                <RadioButton fx:id="residentID" layoutX="196.0" layoutY="112.0" mnemonicParsing="false" text="Resident">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="status" />
+                           </toggleGroup></RadioButton>
+                                <RadioButton fx:id="nonresidentID" layoutX="301.0" layoutY="112.0" mnemonicParsing="false" text="Non Resident" toggleGroup="$status" />
+                                <Button fx:id="addButton" layoutX="195.0" layoutY="301.0" mnemonicParsing="false" onAction="#add" text="Add Employee" />
                                 <Button fx:id="removeButton" layoutX="316.0" layoutY="301.0" mnemonicParsing="false" onAction="#remove" text="Remove Employee" />
                                 <TextArea fx:id="messageArea1" layoutX="-1.0" layoutY="435.0" prefHeight="213.0" prefWidth="600.0" />
-                        <RadioButton fx:id="eceID1" layoutX="365.0" layoutY="61.0" mnemonicParsing="false" text="ME">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="dep1" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="eceID11" layoutX="419.0" layoutY="61.0" mnemonicParsing="false" text="BA">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="dep11" />
-                           </toggleGroup>
-                        </RadioButton>
+                        <RadioButton fx:id="meID" layoutX="365.0" layoutY="61.0" mnemonicParsing="false" text="ME" toggleGroup="$majors" />
+                        <RadioButton fx:id="baID" layoutX="419.0" layoutY="61.0" mnemonicParsing="false" text="BA" toggleGroup="$majors" />
                         <Text layoutX="67.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" wrappingWidth="82.39453125" />
-                        <RadioButton fx:id="PartTimeID1" layoutX="301.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#partClick" text="New York">
+                        <RadioButton fx:id="NYID" layoutX="301.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#partClick" text="New York">
                            <toggleGroup>
-                              <ToggleGroup fx:id="empType1" />
+                              <ToggleGroup fx:id="state" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="PartTimeID2" layoutX="401.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#partClick" text="Connecticut">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="empType2" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <CheckBox layoutX="306.0" layoutY="190.0" mnemonicParsing="false" text="Study Abroad" />
-                        <TextField fx:id="annSal1" layoutX="198.0" layoutY="364.0" prefHeight="25.0" prefWidth="219.0" />
-                        <Text layoutX="55.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuition" wrappingWidth="82.39453125" />
+                        <RadioButton fx:id="ctID" layoutX="401.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#partClick" text="Connecticut" toggleGroup="$state" />
+                        <CheckBox fx:id="studyabroad" layoutX="306.0" layoutY="190.0" mnemonicParsing="false" text="Study Abroad" />
+                        <TextField fx:id="tuition" layoutX="198.0" layoutY="364.0" prefHeight="25.0" prefWidth="219.0" />
+                        <Text layoutX="67.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuition" wrappingWidth="82.39453125" />
+                        <Text layoutX="183.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" wrappingWidth="11.39453125" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -68,26 +67,19 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
+                                <Text layoutX="131.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT COMMAND FROM THE MENU" wrappingWidth="337.99017333984375">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Text>
+                                <Button fx:id="printEmp" layoutX="198.0" layoutY="91.0" mnemonicParsing="false" onAction="#print" text="PRINT EMPLOYEES" />
+                                <Button fx:id="paymentCalc" layoutX="415.0" layoutY="117.0" mnemonicParsing="false" onAction="#calculatePayment" text="CALCULATE " />
                                 <TextArea fx:id="messageArea2" layoutX="-2.0" layoutY="285.0" prefHeight="287.0" prefWidth="606.0" />
-                                <DatePicker fx:id="dateHired" layoutX="165.0" layoutY="154.0" prefHeight="25.0" prefWidth="218.0" />
-                        <RadioButton fx:id="csIDpayment" layoutX="161.0" layoutY="75.0" mnemonicParsing="false" text="CS">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="majorsPayment" />
-                           </toggleGroup></RadioButton>
-                        <RadioButton fx:id="eeIDpayment" layoutX="212.0" layoutY="75.0" mnemonicParsing="false" text="EE" toggleGroup="$majorsPayment" />
-                        <RadioButton fx:id="meIDpayment" layoutX="255.0" layoutY="75.0" mnemonicParsing="false" text="ME" toggleGroup="$majorsPayment" />
-                        <RadioButton fx:id="itIDpayment" layoutX="298.0" layoutY="75.0" mnemonicParsing="false" text="IT" toggleGroup="$majorsPayment" />
-                        <RadioButton fx:id="baIDpayment" layoutX="341.0" layoutY="75.0" mnemonicParsing="false" text="BA" toggleGroup="$majorsPayment" />
-                        <TextField layoutX="154.0" layoutY="32.0" prefHeight="25.0" prefWidth="235.0" text="Enter student name here..." />
-                        <TextField layoutX="165.0" layoutY="109.0" prefHeight="25.0" prefWidth="219.0" text="0.00" />
-                        <Label layoutX="40.0" layoutY="36.0" text="Student Name:" />
-                        <Label layoutX="40.0" layoutY="75.0" text="Major:" />
-                        <Label layoutX="40.0" layoutY="113.0" text="Payment Amount:      $" />
-                        <Label layoutX="40.0" layoutY="158.0" text="Payment Date:" />
-                        <Button layoutX="390.0" layoutY="154.0" mnemonicParsing="false" text="Pay" />
-                        <Label layoutX="40.0" layoutY="200.0" text="Financial Aid Amount: $" />
-                        <TextField layoutX="165.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" text="0.00" />
-                        <Button layoutX="391.0" layoutY="196.0" mnemonicParsing="false" text="Set" />
+                                <Button fx:id="printDep" layoutX="211.0" layoutY="158.0" mnemonicParsing="false" onAction="#printByDept" text="PRINT BY DEP" />
+                                <Button fx:id="printDate" layoutX="207.0" layoutY="234.0" mnemonicParsing="false" onAction="#printByDate" text="PRINT BY DATE" />
+                                <Button fx:id="importButton" layoutX="52.0" layoutY="117.0" mnemonicParsing="false" onAction="#importFile" text="IMPORT" />
+                                <Button fx:id="exportButton" layoutX="52.0" layoutY="200.0" mnemonicParsing="false" onAction="#exportFile" text="EXPORT" />
+                                <DatePicker fx:id="dateHired" layoutX="306.0" layoutY="200.0" prefHeight="25.0" prefWidth="218.0" />
                             </children>
                         </AnchorPane>
                     </content>
