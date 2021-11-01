@@ -117,15 +117,18 @@ public class Roster {
     /**
      * If the com.example.project3.Roster is not empty, prints the full string representation of each com.example.project3.Student.
      */
-    public void print(){
+    public String print(){
         if( isEmpty() ){
-            System.out.println("com.example.project3.Student roster is empty!");
+            return "com.example.project3.Student roster is empty!";
         }else {
-            System.out.println("* list of students in the roster **");
+            String result = "";
+            result = result + "* list of students in the roster **\n";
             for (int c = 0; c < size; c++) {
                 System.out.println(roster[c].fullStringRep());
+                result = result + roster[c].fullStringRep() + "\n";
             }
-            System.out.println("* end of roster **");
+            result = result + "* end of roster **";
+            return result;
         }
     }
 
@@ -148,13 +151,14 @@ public class Roster {
     /**
      * Prints the full string representation of each com.example.project3.Student in the com.example.project3.Roster.
      */
-    public void printByName(){
+    public String printByName(){
         if( isEmpty() ){
-            System.out.println("com.example.project3.Student roster is empty!");
+            return "com.example.project3.Student roster is empty!";
         }else {
+            String result = "";
             sortByName(roster);
             for (int c = 0; c < size; c++) {
-                System.out.println(roster[c].fullStringRep());
+                result = result + roster[c].fullStringRep() + "\n";
             }
         }
     }
@@ -179,19 +183,20 @@ public class Roster {
      * Prints the full string representation of each com.example.project3.Student object in the order in which their last payments were
      * made.
      */
-    public void printByDate(){
+    public String printByDate(){
         if( isEmpty() ){
-            System.out.println("com.example.project3.Student roster is empty!");
+            return "com.example.project3.Student roster is empty!";
         }else {
+            String result = "";
             sortByDate(roster);
-            System.out.println("* list of students made payments ordered by payment date **");
+            result = result + "* list of students made payments ordered by payment date **\n";
             for (int c = 0; c < size; c++) {
                 if(roster[c].getLastPaymentDate() == "--/--/--"){
                     continue;
                 }
-                System.out.println(roster[c].fullStringRep());
+                result = result + roster[c].fullStringRep() +"\n";
             }
-            System.out.println("* end of roster **");
+            result = result + "* end of roster **";
         }
     }
 
