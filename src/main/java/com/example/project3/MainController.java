@@ -235,7 +235,7 @@ public class MainController {
                 messageArea2.appendText("Missing fin aid \n");
                 return false;
             }
-            int aidAmount = Integer.parseInt(finAidID.getText());
+            double aidAmount = Double.parseDouble(finAidID.getText());
             if( aidAmount < 0 || aidAmount > 10000 ){
                 messageArea2.appendText("Invalid amount. \n");
                 return false;
@@ -255,7 +255,7 @@ public class MainController {
             return false;
         }
         catch (NumberFormatException e){
-            messageArea2.appendText("Input must be an integer \n");
+            messageArea2.appendText("Input must be a double \n");
             return false;
         }
     }
@@ -265,7 +265,7 @@ public class MainController {
      */
     public boolean paymentChecker(Student student){
         try{
-            int paymentAmount = Integer.parseInt(paymentAmountID.getText());
+            double paymentAmount = Double.parseDouble(paymentAmountID.getText());
             if( paymentAmount < 0 ){
                 messageArea2.appendText("Payment amount cannot be negative \n");
                 return false;
@@ -281,7 +281,7 @@ public class MainController {
             return false;
         }
         catch (NumberFormatException e){
-            messageArea2.appendText("Input must be an integer \n");
+            messageArea2.appendText("Input must be an double \n");
             return false;
         }
     }
@@ -447,7 +447,7 @@ public class MainController {
                     Student student = new Student(profile);
                     student = roster.placement(student);
                     if (paymentChecker(student)) {
-                        int paymentAmount = Integer.parseInt(paymentAmountID.getText());
+                        double paymentAmount = Double.parseDouble(paymentAmountID.getText());
                         student.setLastPaymentDate(preDate);
                         student.payTuition(paymentAmount);
                         messageArea2.appendText("Payment Applied. \n");
@@ -469,10 +469,11 @@ public class MainController {
             String dept = major.getText();
             Profile profile = new Profile(nameText, dept);
             Student student = new Student(profile);
+            student = roster.placement(student);
             if ( aidChecker(student) ) {
-                int aidAmount = Integer.parseInt(finAidID.getText());
+                double aidAmount = Double.parseDouble(finAidID.getText());
                 student.applyAid(aidAmount);
-                messageArea2.appendText("Tuition updated.");
+                messageArea2.appendText("Tuition updated.\n");
             }
         }
     }
