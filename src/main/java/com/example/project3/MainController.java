@@ -114,6 +114,9 @@ public class MainController {
     private TextField tuition;
 
     @FXML
+    /**
+     Validates the data for adding a student
+     */
      public boolean dataChecker(){
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
@@ -172,7 +175,9 @@ public class MainController {
         return false;
 
     }
-
+    /**
+     Validates the students in the second tab
+     */
     public boolean dataCheckerTab2(){
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
@@ -203,6 +208,9 @@ public class MainController {
         return true;
     }
 
+    /**
+     validates the aid input
+     */
     public boolean aidChecker(Student student){
         try{
             if( !(student instanceof Resident) ){
@@ -230,6 +238,9 @@ public class MainController {
         }
     }
 
+    /**
+        validates whether the payment input is valid and returns a boolean
+     */
     public boolean paymentChecker(Student student){
         try{
             int paymentAmount = Integer.parseInt(paymentAmountID.getText());
@@ -249,6 +260,9 @@ public class MainController {
         }
     }
 
+    /**
+     Validates the credit input to see whether it checks out with the guidelines
+     */
     public boolean creditchecker(){
         try{
             int credits = Integer.parseInt(creditHours.getText());
@@ -364,6 +378,10 @@ public class MainController {
     }
 
     @FXML
+    /**
+     Event Handler for the pay button
+     @param event
+     */
     void pay(ActionEvent event){
         String nameText = name.getText();
         RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
@@ -378,6 +396,10 @@ public class MainController {
     }
 
     @FXML
+    /**
+     Event Handler for the finaid button
+     @param event
+     */
     void finaid(ActionEvent event){
         String nameText = name.getText();
         RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
@@ -407,6 +429,10 @@ public class MainController {
 
 
     @FXML
+    /**
+     Event Handler for the resident button
+     @param event
+     */
     void residentButtonClick(ActionEvent event) {
         tristateID.setDisable(true);
         NYID.setDisable(true);
@@ -418,12 +444,13 @@ public class MainController {
         internationalID.setSelected(false);
         studyabroad.setSelected(false);
         ctID.setSelected(false);
-
-        //ADD DESELECT FOR TRI + INT WHEN RESIDENT IS RECLCIKED
-
     }
 
     @FXML
+    /**
+     Event Handler for the tristate button
+     @param event
+     */
     void tristateButtonClick(ActionEvent event) {
         NYID.setDisable(false);
         ctID.setDisable(false);
@@ -432,19 +459,19 @@ public class MainController {
         studyabroad.setSelected(false);
     }
     @FXML
+    /**
+     Event Handler for the nonResident button
+     @param event
+     */
     void nonResidentButtonClick(ActionEvent event) {
         tristateID.setDisable(false);
         internationalID.setDisable(false);
     }
-    @FXML
-    void CTClick(ActionEvent event) {
 
-    }
-
-    @FXML
-    void NYClick(ActionEvent event) {
-
-    }
+    /**
+     Event Handler for the International button
+     @param event
+     */
     @FXML
     void internationalButtonClick(ActionEvent event) {
         NYID.setDisable(true);
