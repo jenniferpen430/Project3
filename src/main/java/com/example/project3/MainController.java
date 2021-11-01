@@ -203,11 +203,11 @@ public class MainController {
             return false;
         }
         String nameText = namePayment.getText();
-        if(majors.getSelectedToggle() == null ) {
+        if(majorsPayment.getSelectedToggle() == null ) {
             messageArea2.appendText("Missing major \n");
             return false;
         }
-        RadioButton major = (RadioButton) majors.getSelectedToggle();
+        RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
         String dept = major.getText();
         Profile profile = new Profile(nameText, dept);
         Student student = new Student(profile);
@@ -257,6 +257,10 @@ public class MainController {
             messageArea2.appendText("Invalid amount. \n");
             return false;
         }
+        catch (NumberFormatException e){
+            messageArea2.appendText("Input must be an integer \n");
+            return false;
+        }
     }
 
     /**
@@ -276,6 +280,10 @@ public class MainController {
             return true;
         }
         catch (InputMismatchException e){
+            messageArea2.appendText("Input must be an integer \n");
+            return false;
+        }
+        catch (NumberFormatException e){
             messageArea2.appendText("Input must be an integer \n");
             return false;
         }
@@ -404,7 +412,7 @@ public class MainController {
      @param event
      */
     void pay(ActionEvent event){
-        if( dataCheckerTab2()){
+        if( dataCheckerTab2() ){
             String nameText = namePayment.getText();
             RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
             String dept = major.getText();
@@ -427,9 +435,9 @@ public class MainController {
         String dept = major.getText();
         Profile profile = new Profile(nameText, dept);
         Student student = new Student(profile);
-        int aidAmount = Integer.parseInt(finAidID.getText());
-        if( aidChecker(student) ){
-            if (dataCheckerTab2()) {
+        if( dataCheckerTab2() ){
+            if ( aidChecker(student) ) {
+                int aidAmount = Integer.parseInt(finAidID.getText());
                 student.applyAid(aidAmount);
                 messageArea2.appendText("Tuition updated.");
             }
