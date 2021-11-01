@@ -365,11 +365,23 @@ public class MainController {
                         messageArea1.appendText("Student already exists! \n");
                     }
                 }
-
             }
+            clearAll();
         }
     }
 
+    void clearAll(){
+        residentID.setSelected(false);
+        nonresidentID.setSelected(false);
+        tristateID.setSelected(false);
+        NYID.setSelected(false);
+        ctID.setSelected(false);
+        internationalID.setSelected(false);
+        studyabroad.setSelected(false);
+        name.clear();
+        creditHours.clear();
+        majors.selectToggle(null);
+    }
     @FXML
     /**
      Event Handler for the remove button
@@ -396,6 +408,7 @@ public class MainController {
                messageArea1.appendText("Student does not exist. \n");
            }
        }
+        clearAll();
     }
 
     @FXML
