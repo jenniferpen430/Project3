@@ -212,20 +212,12 @@ public class MainController {
         Profile profile = new Profile(nameText, dept);
         Student student = new Student(profile);
         student = roster.placement(student);
-        if( !paymentChecker(student) ){
+        if( !roster.isHere(student) ){
+            messageArea2.appendText("Student does not exist.\n");
             return false;
         }
-        if(paymentDate.getValue() == null ){
-            messageArea2.appendText("Missing payment date \n");
-            return false;
-        }
-        String[] dateArray = paymentDate.getValue().toString().split("-");
-        String preDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
-        Date postDate = new Date(preDate);
-        if( !postDate.isValid() ){
-            messageArea2.appendText("Payment date invalid. \n");
-            return false;
-        }
+        //Removing payment check if statement
+        //Removing date check if statement
         return true;
     }
 
@@ -413,14 +405,29 @@ public class MainController {
      */
     void pay(ActionEvent event){
         if( dataCheckerTab2() ){
-            String nameText = namePayment.getText();
-            RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
-            String dept = major.getText();
-            Profile profile = new Profile(nameText, dept);
-            Student student = new Student(profile);
-            int paymentAmount = Integer.parseInt(paymentAmountID.getText());
-            student.payTuition(paymentAmount);
-            messageArea2.appendText("Payment Applied. \n");
+            if(paymentDate.getValue() == null ){
+                messageArea2.appendText("Missing payment date \n");
+            }else {
+                String[] dateArray = paymentDate.getValue().toString().split("-");
+                String preDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
+                Date postDate = new Date(preDate);
+                if( !postDate.isValid() ){
+                    messageArea2.appendText("Payment date invalid. \n");
+                }else {
+                    String nameText = namePayment.getText();
+                    RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
+                    String dept = major.getText();
+                    Profile profile = new Profile(nameText, dept);
+                    Student student = new Student(profile);
+                    student = roster.placement(student);
+                    if (paymentChecker(student)) {
+                        int paymentAmount = Integer.parseInt(paymentAmountID.getText());
+                        student.setLastPaymentDate(preDate);
+                        student.payTuition(paymentAmount);
+                        messageArea2.appendText("Payment Applied. \n");
+                    }
+                }
+            }
         }
     }
 
