@@ -1,9 +1,9 @@
 package com.example.project3;
 
 /**
- * The com.example.project3.Roster class is used to instantiate com.example.project3.Roster objects, which are growable lists of Students. com.example.project3.Roster has data fields
+ * The Roster class is used to instantiate Roster objects, which are growable lists of Students. Roster has data fields
  * and operations related to the manipulation of this list. Such operations include adding Students, removing them,
- * and checking if the com.example.project3.Roster is empty.
+ * and checking if the Roster is empty.
  * @author Adams, Jennifer
  */
 
@@ -13,7 +13,7 @@ public class Roster {
     private int size; //keep track of the number of students in the roster
 
     /**
-     * Default constructor for the com.example.project3.Roster class, creates a com.example.project3.Student array of size 4 with 0 com.example.project3.Student objects initially
+     * Default constructor for the Roster class, creates a Student array of size 4 with 0 Student objects initially
      * in it.
      */
     public Roster(){
@@ -22,7 +22,7 @@ public class Roster {
     }
 
     /**
-     * Used to check if the inputted com.example.project3.Student object is in the com.example.project3.Roster
+     * Used to check if the inputted Student object is in the Roster
      * @param student student to look for
      * @return
      */
@@ -36,7 +36,7 @@ public class Roster {
     }
 
     /**
-     * Returns position of given com.example.project3.Student in the roster
+     * Returns position of given Student in the roster
      * @param student
      * @return
      */
@@ -61,7 +61,7 @@ public class Roster {
     }
 
     /**
-     * This method is called whenever the com.example.project3.Roster has reached capacity. Its function is to increase the array size by
+     * This method is called whenever the Roster has reached capacity. Its function is to increase the array size by
      * 4 and it accomplishes this by copying the old array into a new, longer one.
      */
     private void grow() {
@@ -74,8 +74,8 @@ public class Roster {
     }
 
     /**
-     * Checks if the inputted com.example.project3.Student object is already in the com.example.project3.Roster and if not, adds them to the last open spot.
-     * Calls grow if the com.example.project3.Roster is full.
+     * Checks if the inputted Student object is already in the Roster and if not, adds them to the last open spot.
+     * Calls grow if the Roster is full.
      * @param student student to be added
      * @return
      */
@@ -92,7 +92,7 @@ public class Roster {
     }
 
     /**
-     * Removes the inputted com.example.project3.Student object from the com.example.project3.Roster if they are in the com.example.project3.Roster.
+     * Removes the inputted Student object from the Roster if they are in the Roster.
      * @param student student to be removed
      * @return boolean that lets the caller know if the removal was successful.
      */
@@ -115,16 +115,15 @@ public class Roster {
     }
 
     /**
-     * If the com.example.project3.Roster is not empty, prints the full string representation of each com.example.project3.Student.
+     * If the Roster is not empty, prints the full string representation of each Student.
      */
     public String print(){
         if( isEmpty() ){
-            return "com.example.project3.Student roster is empty!";
+            return "Student roster is empty!";
         }else {
             String result = "";
             result = result + "* list of students in the roster **\n";
             for (int c = 0; c < size; c++) {
-                System.out.println(roster[c].fullStringRep());
                 result = result + roster[c].fullStringRep() + "\n";
             }
             result = result + "* end of roster **";
@@ -133,7 +132,7 @@ public class Roster {
     }
 
     /**
-     * Sorts the com.example.project3.Roster by the name of each com.example.project3.Student.
+     * Sorts the Roster by the name of each Student.
      * @param roster roster to be sorted
      */
     private void sortByName(Student[] roster){
@@ -149,23 +148,24 @@ public class Roster {
     }
 
     /**
-     * Prints the full string representation of each com.example.project3.Student in the com.example.project3.Roster.
+     * Prints the full string representation of each Student in the Roster.
      */
     public String printByName(){
         if( isEmpty() ){
-            return "com.example.project3.Student roster is empty!";
+            return "Student roster is empty!";
         }else {
             String result = "";
             sortByName(roster);
             for (int c = 0; c < size; c++) {
                 result = result + roster[c].fullStringRep() + "\n";
             }
+            return result;
         }
         return "";
     }
 
     /**
-     * Sorts the com.example.project3.Roster by each com.example.project3.Student object's associated last payment date.
+     * Sorts the Roster by each Student object's associated last payment date.
      * @param roster roster to be sorted
      */
     private void sortByDate(Student[] roster){
@@ -181,12 +181,12 @@ public class Roster {
     }
 
     /**
-     * Prints the full string representation of each com.example.project3.Student object in the order in which their last payments were
+     * Prints the full string representation of each Student object in the order in which their last payments were
      * made.
      */
     public String printByDate(){
         if( isEmpty() ){
-            return "com.example.project3.Student roster is empty!";
+            return "Student roster is empty!";
         }else {
             String result = "";
             sortByDate(roster);
@@ -195,15 +195,15 @@ public class Roster {
                 if(roster[c].getLastPaymentDate() == "--/--/--"){
                     continue;
                 }
-                result = result + roster[c].fullStringRep() +"\n";
+                result = result + roster[c].fullStringRep() + "\n";
             }
-            result = result + "* end of roster **";
+            return result + "* end of roster **";
         }
         return "";
     }
 
     /**
-     * Method used by the sorting methods to swap any two inputted elements of the inputted com.example.project3.Roster.
+     * Method used by the sorting methods to swap any two inputted elements of the inputted Roster.
      * @param roster roster that has the values to be swapped.
      * @param first
      * @param second
@@ -225,7 +225,7 @@ public class Roster {
     }
 
     /**
-     * Calls the tuitionDue() method on each com.example.project3.Student object in the com.example.project3.Roster to calculate their respective tuitions.
+     * Calls the tuitionDue() method on each Student object in the Roster to calculate their respective tuitions.
      */
     public void calculateTuition(){
         for(int i = 0; i < size; i++){

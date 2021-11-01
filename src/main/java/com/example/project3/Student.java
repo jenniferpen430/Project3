@@ -1,10 +1,9 @@
 package com.example.project3;
-
 import java.text.DecimalFormat;
 /**
- * The com.example.project3.Student class holds the common data fields and operations for the com.example.project3.Resident, com.example.project3.TriState, com.example.project3.InternationalTest.NonResident, and
- * com.example.project3.International classes. All data fields are private and must be retrieved using getter and setter methods, abstract
- * methods within the class are overridden by com.example.project3.Student's subclasses.
+ * The Student class holds the common data fields and operations for the Resident, TriState, NonResident, and
+ * International classes. All data fields are private and must be retrieved using getter and setter methods, abstract
+ * methods within the class are overridden by Student's subclasses.
  * @author Adams, Jennifer
  */
 
@@ -27,7 +26,7 @@ public class Student {
     private double aidAmount;
 
     /**
-     * Returns the date of this com.example.project3.Student's last payment
+     * Returns the date of this Student's last payment
      * @return
      */
     public String getLastPaymentDate(){
@@ -35,8 +34,8 @@ public class Student {
     }
 
     /**
-     * Takes in amount of aid offered to the com.example.project3.Student and deducts it from this com.example.project3.Student's outstanding balance. Sets
-     * the finAidApplied field to true to indicate that this com.example.project3.Student has received their one-time financial aid benefit.
+     * Takes in amount of aid offered to the Student and deducts it from this Student's outstanding balance. Sets
+     * the finAidApplied field to true to indicate that this Student has received their one-time financial aid benefit.
      * @param aidAmount
      */
     public void applyAid(double aidAmount){
@@ -46,7 +45,7 @@ public class Student {
     }
 
     /**
-     * Returns amount of aid an instance of com.example.project3.Student has received.
+     * Returns amount of aid an instance of Student has received.
      * @return
      */
     public double getaidAmount(){
@@ -54,7 +53,7 @@ public class Student {
     }
 
     /**
-     * Updates this com.example.project3.Student's paymentMade field to be whatever is passed as an argument.
+     * Updates this Student's paymentMade field to be whatever is passed as an argument.
      * @param paymentMade
      */
     public void setPaymentMade(double paymentMade){
@@ -62,7 +61,7 @@ public class Student {
     }
 
     /**
-     * Returns double representing the number of credits after which a com.example.project3.Student will be additionally charged for the extra
+     * Returns double representing the number of credits after which a Student will be additionally charged for the extra
      * credit hours they take on a per-credit basis.
      * @return
      */
@@ -71,7 +70,7 @@ public class Student {
     }
 
     /**
-     * Updates lastPaymentDate field of the com.example.project3.Student to whatever was passed.
+     * Updates lastPaymentDate field of the Student to whatever was passed.
      * @param lastPaymentDate
      */
     public void setLastPaymentDate(String lastPaymentDate){
@@ -79,7 +78,7 @@ public class Student {
     }
 
     /**
-     * Returns boolean representing whether this com.example.project3.Student has received their one time financial aid benefit.
+     * Returns boolean representing whether this Student has received their one time financial aid benefit.
      * @return
      */
     public boolean getfinAidApplied(){
@@ -87,7 +86,7 @@ public class Student {
     }
 
     /**
-     * Takes an integer representing the amount the user wants to pay for the com.example.project3.Student's tuition. If the outstanding balance
+     * Takes an integer representing the amount the user wants to pay for the Student's tuition. If the outstanding balance
      * is smaller than this amount, the payment is rejected and the method returns false; otherwise the payment is made
      * and the method returns true.
      * @param paymentAmount amount to be paid
@@ -100,7 +99,7 @@ public class Student {
 
 
     /**
-     * Returns integer representing the status of this com.example.project3.Student based on its number of credit hours.
+     * Returns integer representing the status of this Student based on its number of credit hours.
      * @return
      */
     public int getStatus(){
@@ -124,7 +123,7 @@ public class Student {
     }
 
     /**
-     * Sets the com.example.project3.Student's tuition to be whatever double is passed.
+     * Sets the Student's tuition to be whatever double is passed.
      * @param tuition
      */
     public void setTuition(double tuition){
@@ -132,7 +131,7 @@ public class Student {
     }
 
     /**
-     * Returns double representing this com.example.project3.Student's tuition.
+     * Returns double representing this Student's tuition.
      * @return
      */
     public double getTuition(){
@@ -140,14 +139,14 @@ public class Student {
     }
 
     /**
-     * This is an abstract method that is overridden by each of the subclasses. The tuition that an instance of a com.example.project3.Student
+     * This is an abstract method that is overridden by each of the subclasses. The tuition that an instance of a Student
      * owes is calculated upon calling this method.
      */
     public void tuitionDue() {
     }
 
     /**
-     * Updates this com.example.project3.Student's number of credit hours to be whatever integer amount is passed in.
+     * Updates this Student's number of credit hours to be whatever integer amount is passed in.
      * @param credits
      */
     public void setCredits(int credits){
@@ -155,7 +154,7 @@ public class Student {
     }
 
     /**
-     * Updates this com.example.project3.Student's outstanding balance to be whatever integer amount is passed in.
+     * Updates this Student's outstanding balance to be whatever integer amount is passed in.
      * @param balance
      */
     public void setBalance(double balance){
@@ -163,7 +162,7 @@ public class Student {
     }
 
     /**
-     * Constructor for an instance of the com.example.project3.Student class. Takes an instance of com.example.project3.Profile and an integer number of credit hours
+     * Constructor for an instance of the Student class. Takes an instance of Profile and an integer number of credit hours
      * as parameters. Reads number of credits and assigns one of three statuses to the student based on them: -1 meaning
      * part-time if the number of credit hours is less than 12, 0 meaning full time if the number of credit hours is
      * between 12 and 16, or 1 if the number of credit hours is greater than 16. Sets finAidApplied to false by default.
@@ -187,7 +186,7 @@ public class Student {
     }
 
     /**
-     * Constructor for the com.example.project3.Student class, converts inputted String representation of a major, converts it, and stores
+     * Constructor for the Student class, converts inputted String representation of a major, converts it, and stores
      * the given name and major.
      */
     public Student(Profile profile){
@@ -199,7 +198,7 @@ public class Student {
     }
 
     /**
-     * Returns instance of the com.example.project3.Profile class assigned to this instance of the com.example.project3.Student class.
+     * Returns instance of the Profile class assigned to this instance of the Student class.
      * @return
      */
     public Profile getProfile(){
@@ -207,13 +206,13 @@ public class Student {
     }
 
     /**
-     * Returns number of credit hours attributed to this com.example.project3.Student.
+     * Returns number of credit hours attributed to this Student.
      * @return
      */
     public int getCredits(){ return credits; }
 
     /**
-     * Comparison method that returns the equality of this instance of com.example.project3.Student and an inputted instance of com.example.project3.Student
+     * Comparison method that returns the equality of this instance of Student and an inputted instance of Student
      * @param obj
      * @return
      */
@@ -227,7 +226,7 @@ public class Student {
     }
 
     /**
-     * Method that returns the string representation of this com.example.project3.Student's profile
+     * Method that returns the string representation of this Student's profile
      * @return
      */
     @Override

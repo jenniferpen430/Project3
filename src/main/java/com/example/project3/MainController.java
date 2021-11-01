@@ -11,7 +11,9 @@ import javafx.stage.Stage;
 
 /**
  This class is the main connection to the JavaFX GUI application. The methods written here are to make
- the buttons functional. Employees are added, removed, hours set, printed, payment calculated, imported,
+ the buttons
+
+ functional. Employees are added, removed, hours set, printed, payment calculated, imported,
  and exported through several GUI buttons.
  @author jennifer, adams
  */
@@ -175,6 +177,21 @@ public class MainController {
 
         return false;
 
+    }
+
+    public boolean dataCheckerTab2(){
+        String nameText = name.getText();
+        RadioButton major = (RadioButton) majors.getSelectedToggle();
+        String dept = major.getText();
+        if(nameText == null){
+            messageArea1.appendText("Missing name");
+            return false;
+        }
+        if(dept == null) {
+            messageArea1.appendText("Missing major");
+            return false;
+        }
+        //
     }
 
     public boolean creditchecker(){
