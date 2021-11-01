@@ -63,7 +63,7 @@ public class MainController {
     private RadioButton itIDpayment;
 
     @FXML
-    private ToggleGroup location;
+    private ToggleGroup areaIn;
 
     @FXML
     private ToggleGroup majors;
@@ -146,7 +146,7 @@ public class MainController {
         int credits = Integer.parseInt(creditHours.getText());
 
         if(statusText.equals("NonResident")) {
-            RadioButton locations = (RadioButton) location.getSelectedToggle();
+            RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
             String locationText = locations.getText();
             if (locationText.equals("Tristate")) {
                 RadioButton states = (RadioButton) state.getSelectedToggle();
@@ -191,7 +191,7 @@ public class MainController {
             messageArea1.appendText("Missing major");
             return false;
         }
-        //
+        return false; // DELETE MAYBE??
     }
 
     public boolean creditchecker(){
@@ -207,9 +207,11 @@ public class MainController {
             }
             if(credits < 3){
                 messageArea1.appendText("Minimum credit hours is 3.");
+                return false;
             }
             if(credits > 24){
                 messageArea1.appendText("Credit hours exceed the maximum 24.");
+                return false;
             }
             return true;
         }
@@ -243,7 +245,7 @@ public class MainController {
                 }
             }
             else if(statusText.equals("NonResident")){
-                RadioButton locations = (RadioButton) location.getSelectedToggle();
+                RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
                 String locationText = locations.getText();
                 if(locationText == null){
                     NonResident nr = new NonResident(profile,credits);
@@ -318,16 +320,24 @@ public class MainController {
 
     @FXML
     void residentButtonClick(ActionEvent event) {
-        nonresidentID.setDisable(true);
+        tristateID.setDisable(true);
+        NYID.setDisable(true);
+        ctID.setDisable(true);
+        internationalID.setDisable(true);
+        studyabroad.setDisable(true);
+
     }
 
     @FXML
     void tristateButtonClick(ActionEvent event) {
-
+        NYID.setDisable(false);
+        ctID.setDisable(false);
+        studyabroad.setDisable(true);
     }
     @FXML
     void nonResidentButtonClick(ActionEvent event) {
-
+        tristateID.setDisable(false);
+        internationalID.setDisable(false);
     }
     @FXML
     void CTClick(ActionEvent event) {
@@ -340,7 +350,9 @@ public class MainController {
     }
     @FXML
     void internationalButtonClick(ActionEvent event) {
-
+        NYID.setDisable(true);
+        ctID.setDisable(true);
+        studyabroad.setDisable(false);
     }
 
     @FXML

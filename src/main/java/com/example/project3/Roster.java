@@ -161,7 +161,6 @@ public class Roster {
             }
             return result;
         }
-        return "";
     }
 
     /**
@@ -199,7 +198,6 @@ public class Roster {
             }
             return result + "* end of roster **";
         }
-        return "";
     }
 
     /**
