@@ -48,8 +48,8 @@ public class NonResident extends Student{
      * @return
      */
     @Override
-    public String fullStringRep(){
-        String result = super.fullStringRep() +  "non-resident";
+    public String toString(){
+        String result = super.toString() +  "non-resident";
         return result;
     }
 }

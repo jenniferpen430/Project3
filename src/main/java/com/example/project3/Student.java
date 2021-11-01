@@ -226,20 +226,11 @@ public class Student {
     }
 
     /**
-     * Method that returns the string representation of this Student's profile
-     * @return
-     */
-    @Override
-    public String toString() {
-        return profile.toString();
-    }
-
-    /**
      * Returns full string representation of this student, including information such as profile, credit load, tuition,
      * total payment made, and date of last payment. Method is overridden by subclasses to include more information.
      * @return
      */
-    public String fullStringRep() {
+    public String toString() {
         DecimalFormat df = new DecimalFormat("###,###.00");
         String result = profile.toString()+":"+credits+" credit hours:tuition due:"+df.format(balance)+":total payment:"+
                 df.format(paymentMade)+":last payment date: "+lastPaymentDate+":";

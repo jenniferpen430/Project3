@@ -124,7 +124,7 @@ public class Roster {
             String result = "";
             result = result + "* list of students in the roster **\n";
             for (int c = 0; c < size; c++) {
-                result = result + roster[c].fullStringRep() + "\n";
+                result = result + roster[c].toString() + "\n";
             }
             result = result + "* end of roster **\n";
             return result;
@@ -157,7 +157,7 @@ public class Roster {
             String result = "* list of students ordered by name **\n";
             sortByName(roster);
             for (int c = 0; c < size; c++) {
-                result = result + roster[c].fullStringRep() + "\n";
+                result = result + roster[c].toString() + "\n";
             }
             return result+"* end of roster **\n";
         }
@@ -194,7 +194,7 @@ public class Roster {
                 if(roster[c].getLastPaymentDate() == "--/--/--"){
                     continue;
                 }
-                result = result + roster[c].fullStringRep() + "\n";
+                result = result + roster[c].toString() + "\n";
             }
             return result + "* end of roster **\n";
         }

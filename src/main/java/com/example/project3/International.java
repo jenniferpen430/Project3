@@ -52,8 +52,8 @@ public class International extends NonResident {
      * @return
      */
     @Override
-    public String fullStringRep(){
-        String result = super.fullStringRep() +  ":international";
+    public String toString(){
+        String result = super.toString() +  ":international";
         if(studyAbroad){
             return result + ":study abroad";
         }

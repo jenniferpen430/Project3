@@ -42,8 +42,8 @@ public class Resident extends Student{
      * @return
      */
     @Override
-    public String fullStringRep(){
-        String result = super.fullStringRep() +  "resident";
+    public String toString(){
+        String result = super.toString() +  "resident";
         if( getfinAidApplied() ) {
             DecimalFormat df = new DecimalFormat("###,###.00");
             return result+":financial aid $"+df.format(getaidAmount());

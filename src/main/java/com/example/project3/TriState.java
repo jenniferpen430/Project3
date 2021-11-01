@@ -47,8 +47,8 @@ public class TriState extends NonResident{
      * @return
      */
     @Override
-    public String fullStringRep(){
-        String result = super.fullStringRep() +  "(tri-state):";
+    public String toString(){
+        String result = super.toString() +  "(tri-state):";
         if(state.equals("NY")){
             return result+"NY";
         }else {

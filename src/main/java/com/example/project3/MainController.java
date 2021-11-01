@@ -120,14 +120,15 @@ public class MainController {
      public boolean dataChecker(){
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
+
+        if( majors.getSelectedToggle() == null ){
+            messageArea1.appendText("Missing major \n");
+            return false;
+        }
         String dept = major.getText();
 
         if(nameText == null){
             messageArea1.appendText("Missing name \n");
-            return false;
-        }
-        if(dept == null) {
-            messageArea1.appendText("Missing major \n");
             return false;
         }
 
@@ -143,30 +144,35 @@ public class MainController {
         int credits = Integer.parseInt(creditHours.getText());
 
         if(statusText.equals("Non Resident")) {
-            RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
-            String locationText = locations.getText();
-            if (locationText.equals("Tristate")) {
-                RadioButton states = (RadioButton) state.getSelectedToggle();
-                String stateText = states.getText();
-                if(stateText == null){
-                    messageArea1.appendText("Missing State \n");
-                    return false;
-                }
+            if(areaIn.getSelectedToggle()==null){
                 return true;
-            } else if(locationText.equals("International")){
-                if(studyabroad.isSelected()){
-                    if(credits != 12){
-                        messageArea1.appendText("Study Abroad Student must be at 12 credits \n");
+            }else {
+                RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
+                String locationText = locations.getText();
+                if (locationText.equals("Tristate")) {
+                    RadioButton states = (RadioButton) state.getSelectedToggle();
+                    //String stateText = states.getText();
+                    if (state.getSelectedToggle() == null) {
+                        messageArea1.appendText("Missing State \n");
                         return false;
                     }
-                }else {
-                    if(credits < 12 || credits > 24) {
-                        return false;
+                    return true;
+                } else if (locationText.equals("International")) {
+                    if (studyabroad.isSelected()) {
+                        if (credits != 12) {
+                            messageArea1.appendText("Study Abroad Student must be at 12 credits \n");
+                            return false;
+                        }
+                    } else {
+                        if (credits < 12 || credits > 24) {
+                            return false;
+                        }
                     }
+                    return true;
                 }
                 return true;
+                //
             }
-            return true;
         }
         else if(statusText.equals("Resident")){
             return true;
@@ -315,15 +321,16 @@ public class MainController {
             }
             else if(statusText.equals("Non Resident")){
                 RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
-                String locationText = locations.getText();
-                if(locationText == null){
+                //String locationText = locations.getText();
+                if(areaIn.getSelectedToggle() == null){
                     NonResident nr = new NonResident(profile,credits);
                     if (roster.add(nr)) {
                         messageArea1.appendText("Student added! \n");
                     } else {
                         messageArea1.appendText("Student already exists! \n");
                     }
-                } else if(locationText.equals("Tristate")) {
+                }
+                else if(locations.getText().equals("Tristate")) {
                     RadioButton states = (RadioButton) state.getSelectedToggle();
                     String stateText = states.getText();
                     TriState ts = new TriState(profile,credits, stateText);
@@ -332,7 +339,7 @@ public class MainController {
                     } else {
                         messageArea1.appendText("Student already exists! \n");
                     }
-                } else if(locationText.equals("International")) {
+                } else if(locations.getText().equals("International")) {
                     boolean sa = false;
                     if(studyabroad.isSelected()){
                         sa = true;
