@@ -132,6 +132,11 @@ public class MainController {
      public boolean dataChecker(){
         String nameText = name.getText();
 
+        if(nameText == null || nameText.isEmpty() ){
+            messageArea1.appendText("Missing name \n");
+            return false;
+        }
+
         RadioButton major = (RadioButton) majors.getSelectedToggle();
 
         if( majors.getSelectedToggle() == null ){
@@ -140,10 +145,6 @@ public class MainController {
         }
         String dept = major.getText();
 
-        if(nameText == null || nameText.isEmpty() ){
-            messageArea1.appendText("Missing name \n");
-            return false;
-        }
 
         RadioButton resOrNr = (RadioButton) status.getSelectedToggle();
         if(status.getSelectedToggle() == null){
