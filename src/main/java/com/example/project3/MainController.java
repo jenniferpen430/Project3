@@ -291,7 +291,7 @@ public class MainController {
      */
     public boolean creditchecker(){
         try{
-            if(creditHours.getText() == null){
+            if(creditHours.getText().isEmpty()){
                 messageArea1.appendText("Missing credit hours\n");
                 return false;
             }
