@@ -196,20 +196,24 @@ public class MainController {
      */
     public boolean dataCheckerTab2(){
         String nameText = name.getText();
-        RadioButton major = (RadioButton) majors.getSelectedToggle();
-        String dept = major.getText();
         if(nameText == null || nameText.isEmpty()){
             messageArea2.appendText("Missing name \n");
             return false;
         }
-        if(dept == null) {
+        if(majors.getSelectedToggle() == null ) {
             messageArea2.appendText("Missing major \n");
             return false;
         }
+        RadioButton major = (RadioButton) majors.getSelectedToggle();
+        String dept = major.getText();
         Profile profile = new Profile(nameText, dept);
         Student student = new Student(profile);
         student = roster.placement(student);
         if( !paymentChecker(student) ){
+            return false;
+        }
+        if(paymentDate.getValue() == null ){
+            messageArea2.appendText("Missing payment date \n");
             return false;
         }
         String[] dateArray = paymentDate.getValue().toString().split("-");
@@ -217,6 +221,7 @@ public class MainController {
         Date postDate = new Date(preDate);
         if( !postDate.isValid() ){
             messageArea2.appendText("Payment date invalid. \n");
+            return false;
         }
         return true;
     }
@@ -328,7 +333,6 @@ public class MainController {
             }
             else if(statusText.equals("Non Resident")){
                 RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
-                //String locationText = locations.getText();
                 if(areaIn.getSelectedToggle() == null){
                     NonResident nr = new NonResident(profile,credits);
                     if (roster.add(nr)) {
@@ -397,13 +401,13 @@ public class MainController {
      @param event
      */
     void pay(ActionEvent event){
-        String nameText = name.getText();
-        RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
-        String dept = major.getText();
-        Profile profile = new Profile(nameText, dept);
-        Student student = new Student(profile);
-        int paymentAmount = Integer.parseInt(paymentAmountID.getText());
-        if( dataCheckerTab2() ){
+        if( dataCheckerTab2()){
+            String nameText = name.getText();
+            RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
+            String dept = major.getText();
+            Profile profile = new Profile(nameText, dept);
+            Student student = new Student(profile);
+            int paymentAmount = Integer.parseInt(paymentAmountID.getText());
             student.payTuition(paymentAmount);
             messageArea2.appendText("Payment Applied. \n");
         }
