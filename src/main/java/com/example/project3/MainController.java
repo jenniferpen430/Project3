@@ -381,6 +381,8 @@ public class MainController {
         name.clear();
         creditHours.clear();
         majors.selectToggle(null);
+        tristateID.setDisable(true);
+        internationalID.setDisable(true);
     }
     @FXML
     /**
