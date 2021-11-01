@@ -347,11 +347,17 @@ public class MainController {
      @param event
      */
     void remove(ActionEvent event) {
-       if(dataChecker()) {
-           String emp = name.getText();
-           RadioButton major = (RadioButton) majors.getSelectedToggle();
-           String majorText = major.getText();
-           Profile profile = new Profile(emp, majorText);
+        String nameText = name.getText();
+        RadioButton major = (RadioButton) majors.getSelectedToggle();
+        String dept = major.getText();
+        if(nameText == null){
+            messageArea2.appendText("Missing name \n");
+        }
+        else if(dept == null) {
+            messageArea2.appendText("Missing major \n");
+        }
+        else {
+           Profile profile = new Profile(nameText, dept);
            Student student = new Student(profile);
            if (roster.remove(student)) {
                messageArea1.appendText("Student removed. \n");
@@ -413,6 +419,12 @@ public class MainController {
         ctID.setDisable(true);
         internationalID.setDisable(true);
         studyabroad.setDisable(true);
+        NYID.setSelected(false);
+        tristateID.setSelected(false);
+        internationalID.setSelected(false);
+        studyabroad.setSelected(false);
+        ctID.setSelected(false);
+
         //ADD DESELECT FOR TRI + INT WHEN RESIDENT IS RECLCIKED
 
     }
@@ -422,6 +434,8 @@ public class MainController {
         NYID.setDisable(false);
         ctID.setDisable(false);
         studyabroad.setDisable(true);
+        internationalID.setSelected(false);
+        studyabroad.setSelected(false);
     }
     @FXML
     void nonResidentButtonClick(ActionEvent event) {
@@ -442,6 +456,9 @@ public class MainController {
         NYID.setDisable(true);
         ctID.setDisable(true);
         studyabroad.setDisable(false);
+        NYID.setSelected(false);
+        ctID.setSelected(false);
+
     }
 
     @FXML
