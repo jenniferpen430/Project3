@@ -161,6 +161,7 @@ public class Roster {
                 result = result + roster[c].fullStringRep() + "\n";
             }
         }
+        return "";
     }
 
     /**
@@ -198,6 +199,7 @@ public class Roster {
             }
             result = result + "* end of roster **";
         }
+        return "";
     }
 
     /**

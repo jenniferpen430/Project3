@@ -5,6 +5,9 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
+
+import java.io.IOException;
+
 /**
  This is the main class where the Application is extended from. Everything connects together through
  this class.
@@ -13,13 +16,12 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         try {
-            BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
-            Scene scene = new Scene(root,600,600);
-            //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),600,600);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Payroll Processing");
+            primaryStage.setTitle("Tuition Manager");
             primaryStage.show();
         } catch(Exception e) {
             e.printStackTrace();
