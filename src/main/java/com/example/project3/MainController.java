@@ -113,12 +113,13 @@ public class MainController {
                 Profile profile = new Profile(nameText, dept);
                 RadioButton states = (RadioButton) state.getSelectedToggle();
                 String stateText = states.getText();
-
-                if(credits )
-                int credits = Integer.parseInt(creditHours.getText());
                 TriState ts = new TriState(profile, credits, stateText);
 
             } else if(locationText.equals("International")){
+                if(credits < 12){
+                    return false;
+                }
+                return true;
 
             }
         }
@@ -141,6 +142,7 @@ public class MainController {
             if(credits > 24){
                 messageArea1.appendText("Credit hours exceed the maximum 24.");
             }
+            return true;
         }
         catch (InputMismatchException e){
             messageArea1.appendText("Input must be an integer");
@@ -212,24 +214,21 @@ public class MainController {
      @param event
      */
     void remove(ActionEvent event) {
-        try {
-            String emp = name.getText();
-            RadioButton major = (RadioButton) majors.getSelectedToggle();
-            String majorText = major.getText();
-            Profile profile = new Profile(emp, majorText);
-            Student student = new Student(profile);
-            if(roster.remove(student)) {
-                messageArea1.appendText("Student removed. \n");
-            }
-            else if(roster.getNumStudents()==0) {
-                messageArea1.appendText("Student database is empty. \n");
-            } else {
-                messageArea1.appendText("Student does not exist. \n");
-            }
-        }
-        catch (Exception e) {
-            messageArea1.appendText("Error. \n");
-        }
+       if(dataChecker()) {
+           String emp = name.getText();
+           RadioButton major = (RadioButton) majors.getSelectedToggle();
+           String majorText = major.getText();
+           Profile profile = new Profile(emp, majorText);
+           Student student = new Student(profile);
+           if (roster.remove(student)) {
+               messageArea1.appendText("Student removed. \n");
+           } else if (roster.getNumStudents() == 0) {
+               messageArea1.appendText("Student database is empty. \n");
+           } else {
+               messageArea1.appendText("Student does not exist. \n");
+           }
+       }
+
     }
 
     @FXML
@@ -246,34 +245,6 @@ public class MainController {
         }
     }
 
-    @FXML
-    /**
-     Event Handler for the set hours button
-     @param event
-     */
-    void setHours(ActionEvent event) {
-        try {
-            String emp = name.getText();
-            RadioButton selectDep = (RadioButton) majors.getSelectedToggle();
-            String dept = selectDep.getText();
-            String hours = hrsWorked.getText();
-            double hourss = Double.parseDouble(hours);
-            Profile profile = new Profile(emp, dept);
-            Parttime parttime=new Parttime(profile, 0);
-            parttime.setHours(hourss);
-
-            if(hourss<0) {
-                messageArea1.appendText("Working hours cannot be negative. \n");
-            } else if(hourss>100) {
-                messageArea1.appendText("Invalid Hours: over 100. \n");
-            } else if(company.setHours(parttime)) {
-                messageArea1.appendText("Working hours set. \n");
-            }
-        }
-        catch (Exception e) {
-            messageArea1.appendText("Error! Please recheck input! \n");
-        }
-    }
 
     @FXML
     /**
