@@ -291,6 +291,10 @@ public class MainController {
      */
     public boolean creditchecker(){
         try{
+            if(creditHours.getText() == null){
+                messageArea1.appendText("Missing credit hours\n");
+                return false;
+            }
             int credits = Integer.parseInt(creditHours.getText());
             if(credits == 0){
                 messageArea1.appendText("Credit cannot be 0 \n");
