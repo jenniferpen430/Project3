@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 /**
  This is the main class where the Application is extended from. Everything connects together through
  this class.
- @author mayeesha, rebecca
+ @author jennifer, adams
  */
 
 public class Main extends Application {

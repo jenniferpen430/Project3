@@ -42,7 +42,6 @@ public class MainController {
     @FXML
     private Button addButton;
 
-
     @FXML
     private Button removeButton;
 
@@ -76,11 +75,14 @@ public class MainController {
     private TextArea messageArea2;
 
     @FXML
-    private ToggleGroup majors, state, location, status;
+    private ToggleGroup majors, state, location, status, majorsPayment;
+
+    @FXML
+    private TextField payment;
 
     @FXML
     private RadioButton csID, itID, eceID, meID, baID, NYID, ctID, ManagementID,
-            internationalID, nonresidentID;
+            internationalID, nonresidentID, csIDpayment, itIDpayment, eceIDpayment, meIDpayment, baIDpayment;
 
     @FXML
      public boolean dataChecker(){
@@ -154,7 +156,7 @@ public class MainController {
             messageArea1.appendText("Missing major");
             return false;
         }
-        //
+        if( validPayment() )
     }
 
     public boolean creditchecker(){
