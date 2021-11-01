@@ -84,31 +84,47 @@ public class MainController {
      public boolean dataChecker(){
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
+        String dept = major.getText();
 
         if(nameText == null){
             messageArea1.appendText("Missing name");
             return false;
         }
-        if(major.getText() == null){
+        if(dept == null) {
             messageArea1.appendText("Missing major");
             return false;
         }
-        RadioButton locations = (RadioButton) location.getSelectedToggle();
-        String locationText = locations.getText();
 
         RadioButton resOrNr = (RadioButton) status.getSelectedToggle();
         String statusText = resOrNr.getText();
-        if(locationText.equals("Tristate")) {
-            RadioButton states = (RadioButton) state.getSelectedToggle();
-            String stateText = states.getText();
-            TriState ts = new TriState(profile,credits, stateText);
-            if (roster.add(ts)) {
-                messageArea1.appendText("Student added! \n");
-            } else {
-                messageArea1.appendText("Student already exists! \n");
+        if(statusText == null){
+            messageArea1.appendText("Missing Status");
+            return false;
+        }
+        if(!creditchecker()){
+            return false;
+        }
+        int credits = Integer.parseInt(creditHours.getText());
+
+        if(statusText.equals("NonResident")) {
+            RadioButton locations = (RadioButton) location.getSelectedToggle();
+            String locationText = locations.getText();
+            if (locationText.equals("Tristate")) {
+                Profile profile = new Profile(nameText, dept);
+                RadioButton states = (RadioButton) state.getSelectedToggle();
+                String stateText = states.getText();
+
+                if(credits )
+                int credits = Integer.parseInt(creditHours.getText());
+                TriState ts = new TriState(profile, credits, stateText);
+
+            } else if(locationText.equals("International")){
+
             }
         }
+    }
 
+    public boolean creditchecker(){
         try{
             int credits = Integer.parseInt(creditHours.getText());
             if(credits == 0){
@@ -124,7 +140,6 @@ public class MainController {
             messageArea1.appendText("Input must be an integer");
             return false;
         }
-
     }
 
     /**
@@ -233,13 +248,11 @@ public class MainController {
     void setHours(ActionEvent event) {
         try {
             String emp = name.getText();
-            String[] dateSplit = dateHired.getValue().toString().split("-");
-            String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
-            RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
+            RadioButton selectDep = (RadioButton) majors.getSelectedToggle();
             String dept = selectDep.getText();
             String hours = hrsWorked.getText();
             double hourss = Double.parseDouble(hours);
-            Profile profile = new Profile(emp, dept, formattedDate);
+            Profile profile = new Profile(emp, dept);
             Parttime parttime=new Parttime(profile, 0);
             parttime.setHours(hourss);
 
@@ -284,7 +297,7 @@ public class MainController {
             String printDate = roster.printByDate();
             messageArea2.appendText(printDate);
         } else {
-            messageArea2.appendText("Employee database is empty.\n");
+            messageArea2.appendText("student database is empty.\n");
         }
 
         return roster.printByDate();
