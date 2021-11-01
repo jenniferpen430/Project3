@@ -135,7 +135,7 @@ public class MainController {
         }
         String dept = major.getText();
 
-        if(nameText == null){
+        if(nameText == null || nameText.isEmpty() ){
             messageArea1.appendText("Missing name \n");
             return false;
         }
@@ -196,7 +196,7 @@ public class MainController {
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
         String dept = major.getText();
-        if(nameText == null){
+        if(nameText == null || nameText.isEmpty()){
             messageArea2.appendText("Missing name \n");
             return false;
         }
@@ -370,7 +370,7 @@ public class MainController {
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
         String dept = major.getText();
-        if(nameText == null){
+        if(nameText == null || nameText.isEmpty()){
             messageArea2.appendText("Missing name \n");
         }
         else if(dept == null) {
@@ -504,7 +504,7 @@ public class MainController {
             messageArea1.appendText("Missing major \n");
         }else {
             String dept = major.getText();
-            if (nameText == null) {
+            if (nameText == null || nameText.isEmpty() ) {
                 messageArea1.appendText("Missing name \n");
             }else {
                 Profile profile = new Profile(nameText, dept);
