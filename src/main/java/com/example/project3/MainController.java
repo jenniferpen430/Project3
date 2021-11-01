@@ -142,6 +142,21 @@ public class MainController {
 
     }
 
+    public boolean dataCheckerTab2(){
+        String nameText = name.getText();
+        RadioButton major = (RadioButton) majors.getSelectedToggle();
+        String dept = major.getText();
+        if(nameText == null){
+            messageArea1.appendText("Missing name");
+            return false;
+        }
+        if(dept == null) {
+            messageArea1.appendText("Missing major");
+            return false;
+        }
+        //
+    }
+
     public boolean creditchecker(){
         try{
             int credits = Integer.parseInt(creditHours.getText());

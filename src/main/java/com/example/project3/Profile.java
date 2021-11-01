@@ -5,16 +5,15 @@ package com.example.project3;
  * operations.
  * @author Adams, Jennifer
  */
-
 public class Profile {
     private String name;
     private Major major; //5 majors and 2-character each: CS, IT, BA, EE, ME
 
     /**
-     * Constructor for the com.example.project3.Profile class, converts inputted String representation of a major, converts it, and stores
+     * Constructor for the Profile class, converts inputted String representation of a major, converts it, and stores
      * the given name and major.
-     * @param name name of new com.example.project3.Profile
-     * @param major major of new com.example.project3.Profile
+     * @param name name of new Profile
+     * @param major major of new Profile
      */
     public Profile(String name, String major){
         Major majorAsEnum = Major.valueOf(major);
@@ -23,16 +22,24 @@ public class Profile {
     }
 
     /**
-     * Returns the name related to this instance of com.example.project3.Profile
+     * Returns the name related to this instance of Profile
      * @return
      */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the major related to this instance of Profile
+     * @return
+     */
+    public Major getMajor() {
+        return major;
+    }
+
 
     /**
-     * Determines the equivalence between two instances of com.example.project3.Profile
+     * Determines the equivalence between two instances of Profile
      * @param obj object to be compared
      * @return
      */
@@ -49,7 +56,7 @@ public class Profile {
     }
 
     /**
-     * Returns string representation of the com.example.project3.Major instance
+     * Returns string representation of the Major instance
      * @return
      */
     @Override

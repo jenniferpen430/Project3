@@ -7,7 +7,7 @@ import com.example.project3.Student;
  * TriState Students.
  */
 
-public class NonResident extends Student {
+public class NonResident extends Student{
 
     //NonResident Per Credit Fee
     private double N_P_FEE = 966;

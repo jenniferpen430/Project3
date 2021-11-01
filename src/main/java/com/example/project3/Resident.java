@@ -4,11 +4,11 @@ import com.example.project3.Profile;
 
 import java.text.DecimalFormat;
 
-public class Resident extends Student {
+public class Resident extends Student{
 
-    //Full Time com.example.project3.Resident Tuition
+    //Full Time Resident Tuition
     private double FT_RES_TUI = 12536;
-    //com.example.project3.Resident Per Credit Fee
+    //Resident Per Credit Fee
     private double R_PC_FEE = 404;
 
     public Resident(Profile profile, int credits){
