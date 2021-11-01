@@ -184,14 +184,60 @@ public class MainController {
         RadioButton major = (RadioButton) majors.getSelectedToggle();
         String dept = major.getText();
         if(nameText == null){
-            messageArea1.appendText("Missing name");
+            messageArea2.appendText("Missing name");
             return false;
         }
         if(dept == null) {
-            messageArea1.appendText("Missing major");
+            messageArea2.appendText("Missing major");
             return false;
         }
-        return false; // DELETE MAYBE??
+        Profile profile = new Profile(nameText, dept);
+        Student student = new Student(profile);
+        student = roster.placement(student);
+        if( !paymentChecker(student) ){
+            return false;
+        }
+        String[] dateArray = paymentDate.getValue().toString().split("-");
+        String preDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
+        Date postDate = new Date(preDate);
+        if( !postDate.isValid() ){
+            messageArea2.appendText("Payment date invalid.");
+        }
+        if( !aidChecker(student) ){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean aidChecker(Student student){
+        try{
+            int aidAmount = Integer.parseInt(finAidID.getText());
+            if( aidAmount < 0 || aidAmount > 10000 ){
+                messageArea2.appendText()
+            }
+        }
+        catch( InputMismatchException e ){
+            messageArea2.appendText("Invalid amount.");
+        }
+    }
+
+    public boolean paymentChecker(Student student){
+        try{
+            int paymentAmount = Integer.parseInt(paymentAmountID.getText());
+            if( paymentAmount < 0 ){
+                messageArea2.appendText("Payment amount cannot be negative");
+                return false;
+            }
+            if( student.getTuition() < paymentAmount ){
+                messageArea2.appendText("Amount is greater than amount due");
+                return false;
+            }
+            return true;
+        }
+        catch (InputMismatchException e){
+            messageArea2.appendText("Input must be an integer");
+            return false;
+        }
     }
 
     public boolean creditchecker(){
