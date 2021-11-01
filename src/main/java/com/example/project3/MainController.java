@@ -110,19 +110,34 @@ public class MainController {
             RadioButton locations = (RadioButton) location.getSelectedToggle();
             String locationText = locations.getText();
             if (locationText.equals("Tristate")) {
-                Profile profile = new Profile(nameText, dept);
                 RadioButton states = (RadioButton) state.getSelectedToggle();
                 String stateText = states.getText();
-                TriState ts = new TriState(profile, credits, stateText);
-
-            } else if(locationText.equals("International")){
-                if(credits < 12){
+                if(stateText == null){
+                    messageArea1.appendText("Missing State");
                     return false;
                 }
                 return true;
-
+            } else if(locationText.equals("International")){
+                if(studyabroad.isSelected()){
+                    if(credits != 12){
+                        messageArea1.appendText("Study Abroad Student must be at 12 credits");
+                        return false;
+                    }
+                }else {
+                    if(credits < 12 || credits > 24) {
+                        return false;
+                    }
+                }
+                return true;
             }
+            return true;
         }
+        else if(statusText.equals("Resident")){
+            return true;
+        }
+
+        return false;
+
     }
 
     public boolean creditchecker(){
