@@ -438,9 +438,9 @@ public class MainController {
         if(roster.getNumStudents() > 0) {
             roster.calculateTuition();
             calculated = true;
-            messageArea2.appendText("Calculation of student payments is done \n");
+            messageArea3.appendText("Calculation of student payments is done \n");
         } else {
-            messageArea2.appendText("No students in database.\n");
+            messageArea3.appendText("No students in database.\n");
         }
     }
 
