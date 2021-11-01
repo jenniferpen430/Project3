@@ -388,6 +388,7 @@ public class MainController {
         majors.selectToggle(null);
         tristateID.setDisable(true);
         internationalID.setDisable(true);
+        studyabroad.setDisable(true);
     }
     @FXML
     /**

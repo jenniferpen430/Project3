@@ -85,7 +85,6 @@
                                 <Label layoutX="40.0" layoutY="200.0" text="Fin Aid Amount:          $" />
                                 <TextField fx:id="finAidID" layoutX="165.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" promptText="0.00" />
                                 <Button fx:id="finAidSet" layoutX="391.0" layoutY="196.0" mnemonicParsing="false" onAction="#finaid" text="Set" />
-                        <Button layoutX="449.0" layoutY="45.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="106.0" text="Process" />
                             </children>
                         </AnchorPane>
                     </content>
