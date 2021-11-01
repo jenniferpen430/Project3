@@ -127,6 +127,7 @@ public class MainController {
      */
      public boolean dataChecker(){
         String nameText = name.getText();
+
         RadioButton major = (RadioButton) majors.getSelectedToggle();
 
         if( majors.getSelectedToggle() == null ){
@@ -141,11 +142,11 @@ public class MainController {
         }
 
         RadioButton resOrNr = (RadioButton) status.getSelectedToggle();
-        String statusText = resOrNr.getText();
-        if(statusText == null){
+        if(status.getSelectedToggle() == null){
             messageArea1.appendText("Missing Status \n");
             return false;
         }
+        String statusText = resOrNr.getText();
         if(!creditchecker()){
             return false;
         }
