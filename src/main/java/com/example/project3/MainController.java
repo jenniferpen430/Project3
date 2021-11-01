@@ -398,14 +398,15 @@ public class MainController {
     void remove(ActionEvent event) {
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
-        String dept = major.getText();
+
         if(nameText == null || nameText.isEmpty()){
             messageArea2.appendText("Missing name \n");
         }
-        else if(dept == null) {
+        else if(majors.getSelectedToggle() == null) {
             messageArea2.appendText("Missing major \n");
         }
         else {
+            String dept = major.getText();
            Profile profile = new Profile(nameText, dept);
            Student student = new Student(profile);
            if (roster.remove(student)) {
