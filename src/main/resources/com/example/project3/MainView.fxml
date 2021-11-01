@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project3.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project3.MainController">
     <center>
         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -39,12 +49,12 @@
                         <RadioButton fx:id="meID" layoutX="365.0" layoutY="61.0" mnemonicParsing="false" text="ME" toggleGroup="$majors" />
                         <RadioButton fx:id="baID" layoutX="419.0" layoutY="61.0" mnemonicParsing="false" text="BA" toggleGroup="$majors" />
                         <Text layoutX="67.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" wrappingWidth="82.39453125" />
-                        <RadioButton fx:id="NYID" disable="true" layoutX="301.0" layoutY="150.0" mnemonicParsing="false" text="New York">
+                        <RadioButton fx:id="NYID" disable="true" layoutX="301.0" layoutY="150.0" mnemonicParsing="false" text="NY">
                            <toggleGroup>
                               <ToggleGroup fx:id="state" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="ctID" disable="true" layoutX="401.0" layoutY="150.0" mnemonicParsing="false" text="Connecticut" toggleGroup="$state" />
+                        <RadioButton fx:id="ctID" disable="true" layoutX="401.0" layoutY="150.0" mnemonicParsing="false" text="CT" toggleGroup="$state" />
                         <CheckBox fx:id="studyabroad" disable="true" layoutX="306.0" layoutY="190.0" mnemonicParsing="false" text="Study Abroad" />
                         <Button layoutX="54.0" layoutY="301.0" mnemonicParsing="false" onAction="#setStudyAbroad" text="Set Study Abroad" />
                             </children>
