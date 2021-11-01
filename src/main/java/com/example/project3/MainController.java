@@ -136,10 +136,10 @@ public class MainController {
                 return false;
             }
             if(credits < 3){
-                messageArea1.appendText("Credit load must be 3 or above");
+                messageArea1.appendText("Minimum credit hours is 3.");
             }
             if(credits > 24){
-                messageArea1.appendText("Credit load must be 24 or below");
+                messageArea1.appendText("Credit hours exceed the maximum 24.");
             }
         }
         catch (InputMismatchException e){
