@@ -1,15 +1,12 @@
 package com.example.project3;
-import java.io.File;
+
 import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.scene.layout.AnchorPane;
+
 import javafx.stage.Stage;
 
 /**
@@ -23,50 +20,62 @@ import javafx.stage.Stage;
 
 public class MainController {
     Roster roster = new Roster();
-
     @FXML
-    private TextField name;
-
-    @FXML
-    private DatePicker dateHired;
-
-    @FXML
-    private TextField tuition;
-
-    @FXML
-    private TextField creditHours;
-
-    @FXML
-    private TextField rate;
+    private RadioButton NYID;
 
     @FXML
     private Button addButton;
 
     @FXML
-    private Button removeButton;
+    private RadioButton baID;
 
     @FXML
-    private Button printEmp;
+    private RadioButton baIDpayment;
 
     @FXML
-    private CheckBox studyabroad;
-    @FXML
-    private Button printDep;
+    private TextField creditHours;
 
     @FXML
-    private Button importButton;
+    private RadioButton csID;
 
     @FXML
-    private Button exportButton;
+    private RadioButton csIDpayment;
 
     @FXML
-    private Button printDate;
+    private RadioButton ctID;
 
     @FXML
-    private Button sethrButton;
+    private RadioButton eceID;
 
     @FXML
-    private Button paymentCalc;
+    private RadioButton eeIDpayment;
+
+    @FXML
+    private TextField finAidID;
+
+    @FXML
+    private RadioButton internationalID;
+
+    @FXML
+    private RadioButton itID;
+
+    @FXML
+    private RadioButton itIDpayment;
+
+    @FXML
+    private ToggleGroup location;
+
+    @FXML
+    private ToggleGroup majors;
+
+    @FXML
+    private ToggleGroup majorsPayment;
+
+    @FXML
+    private RadioButton meID;
+
+    @FXML
+    private RadioButton meIDpayment;
 
     @FXML
     private TextArea messageArea1;
@@ -75,14 +84,40 @@ public class MainController {
     private TextArea messageArea2;
 
     @FXML
-    private ToggleGroup majors, state, location, status, majorsPayment;
+    private TextField name;
 
     @FXML
-    private TextField payment;
+    private RadioButton nonresidentID;
 
     @FXML
-    private RadioButton csID, itID, eceID, meID, baID, NYID, ctID, ManagementID,
-            internationalID, nonresidentID, csIDpayment, itIDpayment, eceIDpayment, meIDpayment, baIDpayment;
+    private TextField paymentAmountID;
+
+    @FXML
+    private DatePicker paymentDate;
+
+    @FXML
+    private AnchorPane paymentDateID;
+
+    @FXML
+    private Button removeButton;
+
+    @FXML
+    private RadioButton residentID;
+
+    @FXML
+    private ToggleGroup state;
+
+    @FXML
+    private ToggleGroup status;
+
+    @FXML
+    private CheckBox studyabroad;
+
+    @FXML
+    private RadioButton tristateID;
+
+    @FXML
+    private TextField tuition;
 
     @FXML
      public boolean dataChecker(){
@@ -156,7 +191,7 @@ public class MainController {
             messageArea1.appendText("Missing major");
             return false;
         }
-        if( validPayment() )
+        //
     }
 
     public boolean creditchecker(){
@@ -188,6 +223,7 @@ public class MainController {
      * Event Handler for the add button
      * @param event
      */
+    @FXML
     void add(ActionEvent event) {
         if(dataChecker()){
             String nameText = name.getText();
@@ -279,6 +315,33 @@ public class MainController {
         }
     }
 
+
+    @FXML
+    void residentButtonClick(ActionEvent event) {
+        nonresidentID.setDisable(true);
+    }
+
+    @FXML
+    void tristateButtonClick(ActionEvent event) {
+
+    }
+    @FXML
+    void nonResidentButtonClick(ActionEvent event) {
+
+    }
+    @FXML
+    void CTClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void NYClick(ActionEvent event) {
+
+    }
+    @FXML
+    void internationalButtonClick(ActionEvent event) {
+
+    }
 
     @FXML
     /**
