@@ -27,7 +27,7 @@
                                     </toggleGroup></RadioButton>
                                 <RadioButton fx:id="PartTimeID" layoutX="195.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#partClick" prefHeight="18.0" prefWidth="97.0" text="International" toggleGroup="$empType" />
                                 <Text layoutX="67.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit Hours" wrappingWidth="82.39453125" />
-                                <TextField fx:id="annSal" layoutX="198.0" layoutY="260.0" prefHeight="25.0" prefWidth="219.0" />
+                                <TextField fx:id="annSal" layoutX="219.0" layoutY="252.0" prefHeight="25.0" prefWidth="219.0" />
                                 <RadioButton fx:id="managerID" layoutX="196.0" layoutY="112.0" mnemonicParsing="false" text="Resident">
                                     <toggleGroup>
                                         <ToggleGroup fx:id="mgmtType" />
