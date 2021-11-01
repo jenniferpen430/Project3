@@ -178,6 +178,7 @@ public class MainController {
                         }
                     } else {
                         if (credits < 12 || credits > 24) {
+                            messageArea1.appendText("International students must enroll in at least 12 credits \n");
                             return false;
                         }
                     }
@@ -228,6 +229,10 @@ public class MainController {
         try{
             if( !(student instanceof Resident) ){
                 messageArea2.appendText("Not a resident student. \n");
+                return false;
+            }
+            if(finAidID.getText() == null){
+                messageArea2.appendText("Missing fin aid \n");
                 return false;
             }
             int aidAmount = Integer.parseInt(finAidID.getText());
@@ -453,12 +458,12 @@ public class MainController {
      @param event
      */
     void finaid(ActionEvent event){
-        String nameText = namePayment.getText();
-        RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
-        String dept = major.getText();
-        Profile profile = new Profile(nameText, dept);
-        Student student = new Student(profile);
         if( dataCheckerTab2() ){
+            String nameText = namePayment.getText();
+            RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
+            String dept = major.getText();
+            Profile profile = new Profile(nameText, dept);
+            Student student = new Student(profile);
             if ( aidChecker(student) ) {
                 int aidAmount = Integer.parseInt(finAidID.getText());
                 student.applyAid(aidAmount);
