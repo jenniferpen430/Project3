@@ -489,10 +489,10 @@ public class MainController {
      */
     String print(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
-            messageArea2.appendText("Printing student roster \n");
-            messageArea2.appendText(roster.print());
+            messageArea3.appendText("Printing student roster \n");
+            messageArea3.appendText(roster.print());
         } else {
-            messageArea2.appendText("Student roster is empty. \n");
+            messageArea3.appendText("Student roster is empty. \n");
         }
 
         return roster.print();
@@ -501,11 +501,11 @@ public class MainController {
     @FXML
     String printByName(ActionEvent event){
         if(roster.getNumStudents() > 0) {
-            messageArea2.appendText("--Printing student roster by name-- \n");
+            messageArea3.appendText("--Printing student roster by name-- \n");
             String printName = roster.printByName();
-            messageArea2.appendText(printName);
+            messageArea3.appendText(printName);
         } else {
-            messageArea2.appendText("student roster is empty.\n");
+            messageArea3.appendText("student roster is empty.\n");
         }
 
         return roster.printByName();
@@ -519,11 +519,11 @@ public class MainController {
      */
     String printByDate(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
-            messageArea2.appendText("--Printing student roster by payment date-- \n");
+            messageArea3.appendText("--Printing student roster by payment date-- \n");
             String printDate = roster.printByDate();
-            messageArea2.appendText(printDate);
+            messageArea3.appendText(printDate);
         } else {
-            messageArea2.appendText("student roster is empty.\n");
+            messageArea3.appendText("student roster is empty.\n");
         }
 
         return roster.printByDate();

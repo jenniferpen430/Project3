@@ -119,14 +119,14 @@ public class Roster {
      */
     public String print(){
         if( isEmpty() ){
-            return "Student roster is empty!";
+            return "Student roster is empty!\n";
         }else {
             String result = "";
             result = result + "* list of students in the roster **\n";
             for (int c = 0; c < size; c++) {
                 result = result + roster[c].fullStringRep() + "\n";
             }
-            result = result + "* end of roster **";
+            result = result + "* end of roster **\n";
             return result;
         }
     }
@@ -152,14 +152,14 @@ public class Roster {
      */
     public String printByName(){
         if( isEmpty() ){
-            return "Student roster is empty!";
+            return "Student roster is empty!\n";
         }else {
-            String result = "";
+            String result = "* list of students ordered by name **\n";
             sortByName(roster);
             for (int c = 0; c < size; c++) {
                 result = result + roster[c].fullStringRep() + "\n";
             }
-            return result;
+            return result+"* end of roster **\n";
         }
     }
 
@@ -185,7 +185,7 @@ public class Roster {
      */
     public String printByDate(){
         if( isEmpty() ){
-            return "Student roster is empty!";
+            return "Student roster is empty!\n";
         }else {
             String result = "";
             sortByDate(roster);
@@ -196,7 +196,7 @@ public class Roster {
                 }
                 result = result + roster[c].fullStringRep() + "\n";
             }
-            return result + "* end of roster **";
+            return result + "* end of roster **\n";
         }
     }
 
