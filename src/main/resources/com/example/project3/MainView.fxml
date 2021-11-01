@@ -23,9 +23,9 @@
                                 <TextField fx:id="name" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" />
                                 <RadioButton fx:id="tristateID" disable="true" layoutX="195.0" layoutY="150.0" mnemonicParsing="false" onAction="#tristateButtonClick" text="Tristate">
                            <toggleGroup>
-                              <ToggleGroup fx:id="location" />
+                              <ToggleGroup fx:id="areaIn" />
                            </toggleGroup></RadioButton>
-                                <RadioButton fx:id="internationalID" disable="true" layoutX="195.0" layoutY="189.0" mnemonicParsing="false" onAction="#internationalButtonClick" prefHeight="18.0" prefWidth="97.0" text="International" toggleGroup="$location" />
+                                <RadioButton fx:id="internationalID" disable="true" layoutX="195.0" layoutY="189.0" mnemonicParsing="false" onAction="#internationalButtonClick" prefHeight="18.0" prefWidth="97.0" text="International" toggleGroup="$areaIn" />
                                 <Text layoutX="67.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit Hours" wrappingWidth="82.39453125" />
                                 <TextField fx:id="creditHours" layoutX="198.0" layoutY="260.0" prefHeight="25.0" prefWidth="219.0" />
                                 <RadioButton fx:id="residentID" layoutX="196.0" layoutY="112.0" mnemonicParsing="false" onAction="#residentButtonClick" text="Resident">

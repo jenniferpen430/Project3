@@ -198,7 +198,6 @@ public class Roster {
             }
             return result + "* end of roster **";
         }
-        return "";
     }
 
     /**

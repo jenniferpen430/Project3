@@ -63,12 +63,13 @@ public class MainController {
     private RadioButton itIDpayment;
 
     @FXML
-    private ToggleGroup location;
+    private ToggleGroup areaIn;
 
     @FXML
     private ToggleGroup majors;
 
-    @FXML ToggleGroup majorsPayment;
+    @FXML
+    private ToggleGroup majorsPayment;
 
     @FXML
     private RadioButton meID;
@@ -145,7 +146,7 @@ public class MainController {
         int credits = Integer.parseInt(creditHours.getText());
 
         if(statusText.equals("NonResident")) {
-            RadioButton locations = (RadioButton) location.getSelectedToggle();
+            RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
             String locationText = locations.getText();
             if (locationText.equals("Tristate")) {
                 RadioButton states = (RadioButton) state.getSelectedToggle();
@@ -180,10 +181,8 @@ public class MainController {
 
     public boolean dataCheckerTab2(){
         String nameText = name.getText();
-        RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
+        RadioButton major = (RadioButton) majors.getSelectedToggle();
         String dept = major.getText();
-        Profile profile = new Profile(nameText,dept);
-        Student student = new Student(profile);
         if(nameText == null){
             messageArea1.appendText("Missing name");
             return false;
@@ -192,15 +191,7 @@ public class MainController {
             messageArea1.appendText("Missing major");
             return false;
         }
-        if( paymentAmountID < 0 ){
-            return false;
-        }
-        String[] preDate = paymentDate.getValue().toString().split("-");
-        String postDate = preDate[1] + "/" + preDate[2] + "/" + preDate[0];
-        Date paymentDateFinal = new Date(postDate);
-        if( !paymentDateFinal.isValid() ){
-            return false;
-        }
+        return false; // DELETE MAYBE??
     }
 
     public boolean creditchecker(){
@@ -216,9 +207,11 @@ public class MainController {
             }
             if(credits < 3){
                 messageArea1.appendText("Minimum credit hours is 3.");
+                return false;
             }
             if(credits > 24){
                 messageArea1.appendText("Credit hours exceed the maximum 24.");
+                return false;
             }
             return true;
         }
@@ -252,7 +245,7 @@ public class MainController {
                 }
             }
             else if(statusText.equals("NonResident")){
-                RadioButton locations = (RadioButton) location.getSelectedToggle();
+                RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
                 String locationText = locations.getText();
                 if(locationText == null){
                     NonResident nr = new NonResident(profile,credits);
@@ -327,16 +320,24 @@ public class MainController {
 
     @FXML
     void residentButtonClick(ActionEvent event) {
-        nonresidentID.setDisable(true);
+        tristateID.setDisable(true);
+        NYID.setDisable(true);
+        ctID.setDisable(true);
+        internationalID.setDisable(true);
+        studyabroad.setDisable(true);
+
     }
 
     @FXML
     void tristateButtonClick(ActionEvent event) {
-
+        NYID.setDisable(false);
+        ctID.setDisable(false);
+        studyabroad.setDisable(true);
     }
     @FXML
     void nonResidentButtonClick(ActionEvent event) {
-
+        tristateID.setDisable(false);
+        internationalID.setDisable(false);
     }
     @FXML
     void CTClick(ActionEvent event) {
@@ -349,7 +350,9 @@ public class MainController {
     }
     @FXML
     void internationalButtonClick(ActionEvent event) {
-
+        NYID.setDisable(true);
+        ctID.setDisable(true);
+        studyabroad.setDisable(false);
     }
 
     @FXML
