@@ -184,11 +184,11 @@ public class MainController {
         RadioButton major = (RadioButton) majors.getSelectedToggle();
         String dept = major.getText();
         if(nameText == null){
-            messageArea2.appendText("Missing name");
+            messageArea2.appendText("Missing name \n");
             return false;
         }
         if(dept == null) {
-            messageArea2.appendText("Missing major");
+            messageArea2.appendText("Missing major \n");
             return false;
         }
         Profile profile = new Profile(nameText, dept);
@@ -201,7 +201,7 @@ public class MainController {
         String preDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
         Date postDate = new Date(preDate);
         if( !postDate.isValid() ){
-            messageArea2.appendText("Payment date invalid.");
+            messageArea2.appendText("Payment date invalid. \n");
         }
         if( !aidChecker(student) ){
             return false;
@@ -212,26 +212,26 @@ public class MainController {
     public boolean aidChecker(Student student){
         try{
             if( !(student instanceof Resident) ){
-                messageArea2.appendText("Not a resident student.");
+                messageArea2.appendText("Not a resident student. \n");
                 return false;
             }
             int aidAmount = Integer.parseInt(finAidID.getText());
             if( aidAmount < 0 || aidAmount > 10000 ){
-                messageArea2.appendText("Invalid amount.");
+                messageArea2.appendText("Invalid amount. \n");
                 return false;
             }
             if(student.getStatus() == -1){
-                messageArea2.appendText("Parttime student doesn't qualify for the award.");
+                messageArea2.appendText("Parttime student doesn't qualify for the award. \n");
                 return false;
             }
             if(student.getfinAidApplied()){
-                messageArea2.appendText("Awarded once already.");
+                messageArea2.appendText("Awarded once already. \n");
                 return false;
             }
             return true;
         }
         catch( InputMismatchException e ){
-            messageArea2.appendText("Invalid amount.");
+            messageArea2.appendText("Invalid amount. \n");
             return false;
         }
     }
@@ -240,17 +240,17 @@ public class MainController {
         try{
             int paymentAmount = Integer.parseInt(paymentAmountID.getText());
             if( paymentAmount < 0 ){
-                messageArea2.appendText("Payment amount cannot be negative");
+                messageArea2.appendText("Payment amount cannot be negative \n");
                 return false;
             }
             if( student.getTuition() < paymentAmount ){
-                messageArea2.appendText("Amount is greater than amount due");
+                messageArea2.appendText("Amount is greater than amount due \n");
                 return false;
             }
             return true;
         }
         catch (InputMismatchException e){
-            messageArea2.appendText("Input must be an integer");
+            messageArea2.appendText("Input must be an integer \n");
             return false;
         }
     }
@@ -361,7 +361,34 @@ public class MainController {
                messageArea1.appendText("Student does not exist. \n");
            }
        }
+    }
 
+    @FXML
+    void pay(ActionEvent event){
+        String nameText = name.getText();
+        RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
+        String dept = major.getText();
+        Profile profile = new Profile(nameText, dept);
+        Student student = new Student(profile);
+        int paymentAmount = Integer.parseInt(paymentAmountID.getText());
+        if( dataCheckerTab2() ){
+            student.payTuition(paymentAmount);
+            messageArea2.appendText("Payment Applied. \n");
+        }
+    }
+
+    @FXML
+    void finaid(ActionEvent event){
+        String nameText = name.getText();
+        RadioButton major = (RadioButton) majorsPayment.getSelectedToggle();
+        String dept = major.getText();
+        Profile profile = new Profile(nameText, dept);
+        Student student = new Student(profile);
+        int aidAmount = Integer.parseInt(finAidID.getText());
+        if(dataCheckerTab2()){
+            student.applyAid(aidAmount);
+            messageArea2.appendText("Tuition updated.");
+        }
     }
 
     @FXML

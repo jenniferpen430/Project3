@@ -73,10 +73,10 @@
                                 <Label layoutX="40.0" layoutY="75.0" text="Major:" />
                                 <Label layoutX="40.0" layoutY="113.0" text="Payment Amount:      $" />
                                 <Label layoutX="40.0" layoutY="158.0" text="Payment Date:" />
-                                <Button layoutX="390.0" layoutY="154.0" mnemonicParsing="false" text="Pay" />
+                                <Button layoutX="390.0" layoutY="154.0" mnemonicParsing="false" onAction="#pay" text="Pay" />
                                 <Label layoutX="40.0" layoutY="200.0" text="Financial Aid Amount: $" />
                                 <TextField fx:id="finAidID" layoutX="165.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" text="0.00" />
-                                <Button layoutX="391.0" layoutY="196.0" mnemonicParsing="false" text="Set" />
+                                <Button layoutX="391.0" layoutY="196.0" mnemonicParsing="false" onAction="#finaid" text="Set" />
                             </children>
                         </AnchorPane>
                     </content>
