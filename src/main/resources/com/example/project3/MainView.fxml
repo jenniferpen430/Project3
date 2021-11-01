@@ -46,8 +46,8 @@
                               <ToggleGroup fx:id="status" />
                            </toggleGroup></RadioButton>
                                 <RadioButton fx:id="nonresidentID" layoutX="301.0" layoutY="112.0" mnemonicParsing="false" onAction="#nonResidentButtonClick" text="Non Resident" toggleGroup="$status" />
-                                <Button fx:id="addButton" layoutX="195.0" layoutY="301.0" mnemonicParsing="false" onAction="#add" text="Add Employee" />
-                                <Button fx:id="removeButton" layoutX="316.0" layoutY="301.0" mnemonicParsing="false" onAction="#remove" text="Remove Employee" />
+                                <Button fx:id="addButton" layoutX="195.0" layoutY="301.0" mnemonicParsing="false" onAction="#add" text="Add Student" />
+                                <Button fx:id="removeButton" layoutX="316.0" layoutY="301.0" mnemonicParsing="false" onAction="#remove" text="Remove Student" />
                                 <TextArea fx:id="messageArea1" layoutX="-1.0" layoutY="435.0" prefHeight="213.0" prefWidth="600.0" />
                         <RadioButton fx:id="meID" layoutX="365.0" layoutY="61.0" mnemonicParsing="false" text="ME" toggleGroup="$majors" />
                         <RadioButton fx:id="baID" layoutX="419.0" layoutY="61.0" mnemonicParsing="false" text="BA" toggleGroup="$majors" />
@@ -59,7 +59,7 @@
                         </RadioButton>
                         <RadioButton fx:id="ctID" disable="true" layoutX="401.0" layoutY="150.0" mnemonicParsing="false" onAction="#CTClick" text="Connecticut" toggleGroup="$state" />
                         <CheckBox fx:id="studyabroad" disable="true" layoutX="306.0" layoutY="190.0" mnemonicParsing="false" text="Study Abroad" />
-                        <TextField fx:id="tuition" layoutX="198.0" layoutY="364.0" prefHeight="25.0" prefWidth="219.0" />
+                        <TextField fx:id="tuition" layoutX="198.0" layoutY="364.0" prefHeight="25.0" prefWidth="219.0" promptText="0.00" />
                         <Text layoutX="67.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuition" wrappingWidth="82.39453125" />
                         <Text layoutX="183.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" wrappingWidth="11.39453125" />
                             </children>

@@ -126,18 +126,18 @@ public class MainController {
         String dept = major.getText();
 
         if(nameText == null){
-            messageArea1.appendText("Missing name");
+            messageArea1.appendText("Missing name \n");
             return false;
         }
         if(dept == null) {
-            messageArea1.appendText("Missing major");
+            messageArea1.appendText("Missing major \n");
             return false;
         }
 
         RadioButton resOrNr = (RadioButton) status.getSelectedToggle();
         String statusText = resOrNr.getText();
         if(statusText == null){
-            messageArea1.appendText("Missing Status");
+            messageArea1.appendText("Missing Status \n");
             return false;
         }
         if(!creditchecker()){
@@ -152,14 +152,14 @@ public class MainController {
                 RadioButton states = (RadioButton) state.getSelectedToggle();
                 String stateText = states.getText();
                 if(stateText == null){
-                    messageArea1.appendText("Missing State");
+                    messageArea1.appendText("Missing State \n");
                     return false;
                 }
                 return true;
             } else if(locationText.equals("International")){
                 if(studyabroad.isSelected()){
                     if(credits != 12){
-                        messageArea1.appendText("Study Abroad Student must be at 12 credits");
+                        messageArea1.appendText("Study Abroad Student must be at 12 credits \n");
                         return false;
                     }
                 }else {
@@ -184,11 +184,11 @@ public class MainController {
         RadioButton major = (RadioButton) majors.getSelectedToggle();
         String dept = major.getText();
         if(nameText == null){
-            messageArea1.appendText("Missing name");
+            messageArea1.appendText("Missing name \n");
             return false;
         }
         if(dept == null) {
-            messageArea1.appendText("Missing major");
+            messageArea1.appendText("Missing major \n");
             return false;
         }
         return false; // DELETE MAYBE??
@@ -198,25 +198,25 @@ public class MainController {
         try{
             int credits = Integer.parseInt(creditHours.getText());
             if(credits == 0){
-                messageArea1.appendText("Credit cannot be 0");
+                messageArea1.appendText("Credit cannot be 0 \n");
                 return false;
             }
             if(credits < 0 ){
-                messageArea1.appendText("Credit cannot be negative");
+                messageArea1.appendText("Credit cannot be negative \n");
                 return false;
             }
             if(credits < 3){
-                messageArea1.appendText("Minimum credit hours is 3.");
+                messageArea1.appendText("Minimum credit hours is 3. \n");
                 return false;
             }
             if(credits > 24){
-                messageArea1.appendText("Credit hours exceed the maximum 24.");
+                messageArea1.appendText("Credit hours exceed the maximum 24. \n");
                 return false;
             }
             return true;
         }
         catch (InputMismatchException e){
-            messageArea1.appendText("Input must be an integer");
+            messageArea1.appendText("Input must be an integer \n");
             return false;
         }
     }
@@ -325,6 +325,7 @@ public class MainController {
         ctID.setDisable(true);
         internationalID.setDisable(true);
         studyabroad.setDisable(true);
+        //ADD DESELECT FOR TRI + INT WHEN RESIDENT IS RECLCIKED
 
     }
 
