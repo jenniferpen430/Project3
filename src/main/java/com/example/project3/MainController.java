@@ -145,7 +145,7 @@ public class MainController {
         }
         int credits = Integer.parseInt(creditHours.getText());
 
-        if(statusText.equals("NonResident")) {
+        if(statusText.equals("Non Resident")) {
             RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
             String locationText = locations.getText();
             if (locationText.equals("Tristate")) {
@@ -215,7 +215,7 @@ public class MainController {
             }
             return true;
         }
-        catch (InputMismatchException e){
+        catch (NumberFormatException e){
             messageArea1.appendText("Input must be an integer \n");
             return false;
         }
@@ -244,7 +244,7 @@ public class MainController {
                     messageArea1.appendText("Student already exists! \n");
                 }
             }
-            else if(statusText.equals("NonResident")){
+            else if(statusText.equals("Non Resident")){
                 RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
                 String locationText = locations.getText();
                 if(locationText == null){
