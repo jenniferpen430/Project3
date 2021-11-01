@@ -30,6 +30,9 @@ public class MainController {
     private RadioButton baIDpayment;
 
     @FXML
+    private Button payButton;
+
+    @FXML
     private TextField creditHours;
 
     @FXML
@@ -55,6 +58,9 @@ public class MainController {
 
     @FXML
     private RadioButton itID;
+
+    @FXML
+    private Button finAidSet;
 
     @FXML
     private RadioButton itIDpayment;
@@ -112,6 +118,8 @@ public class MainController {
 
     @FXML
     private TextField tuition;
+
+    private boolean calculated;
 
     @FXML
     /**
@@ -207,9 +215,6 @@ public class MainController {
         Date postDate = new Date(preDate);
         if( !postDate.isValid() ){
             messageArea2.appendText("Payment date invalid. \n");
-        }
-        if( !aidChecker(student) ){
-            return false;
         }
         return true;
     }
@@ -414,9 +419,11 @@ public class MainController {
         Profile profile = new Profile(nameText, dept);
         Student student = new Student(profile);
         int aidAmount = Integer.parseInt(finAidID.getText());
-        if(dataCheckerTab2()){
-            student.applyAid(aidAmount);
-            messageArea2.appendText("Tuition updated.");
+        if( aidChecker(student) ){
+            if (dataCheckerTab2()) {
+                student.applyAid(aidAmount);
+                messageArea2.appendText("Tuition updated.");
+            }
         }
     }
 
@@ -428,6 +435,7 @@ public class MainController {
     void calculatePayment(ActionEvent event) {
         if(roster.getNumStudents() > 0) {
             roster.calculateTuition();
+            calculated = true;
             messageArea2.appendText("Calculation of student payments is done \n");
         } else {
             messageArea2.appendText("No students in database.\n");
@@ -486,6 +494,39 @@ public class MainController {
         studyabroad.setDisable(false);
         NYID.setSelected(false);
         ctID.setSelected(false);
+    }
+
+    @FXML
+    void setStudyAbroad(ActionEvent event){
+        String nameText = name.getText();
+        RadioButton major = (RadioButton) majors.getSelectedToggle();
+        if( majors.getSelectedToggle() == null ){
+            messageArea1.appendText("Missing major \n");
+        }else {
+            String dept = major.getText();
+            if (nameText == null) {
+                messageArea1.appendText("Missing name \n");
+            }else {
+                Profile profile = new Profile(nameText, dept);
+                Student student = new Student(profile);
+                student = roster.placement(student);
+                if (!roster.isHere(student)) {
+                    messageArea1.appendText("Couldn't find the international student.\n");
+                }else {
+                    if (student instanceof International) {
+                        ((International) student).setStudyAbroad(true);
+                        student.setLastPaymentDate("--/--/--");
+                        student.setPaymentMade(0.00);
+                        messageArea1.appendText("Tuition updated.\n");
+                        if(calculated){
+                            student.tuitionDue();
+                        }
+                    } else {
+                        messageArea1.appendText("Student must be International\n");
+                    }
+                }
+            }
+        }
 
     }
 
