@@ -135,6 +135,12 @@ public class MainController {
                 messageArea1.appendText("Credit cannot be negative");
                 return false;
             }
+            if(credits < 3){
+                messageArea1.appendText("Credit load must be 3 or above");
+            }
+            if(credits > 24){
+                messageArea1.appendText("Credit load must be 24 or below");
+            }
         }
         catch (InputMismatchException e){
             messageArea1.appendText("Input must be an integer");
