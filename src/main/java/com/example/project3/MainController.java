@@ -459,6 +459,7 @@ public class MainController {
                 }
             }
         }
+        clearAll();
     }
 
     @FXML
@@ -481,6 +482,7 @@ public class MainController {
                 messageArea2.appendText("Tuition updated.\n");
             }
         }
+        clearAll();
     }
 
     @FXML
@@ -587,7 +589,7 @@ public class MainController {
                 }
             }
         }
-
+        clearAll();
     }
 
     @FXML
