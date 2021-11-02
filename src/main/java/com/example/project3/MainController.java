@@ -256,7 +256,7 @@ public class MainController {
             return false;
         }
         catch (NumberFormatException e){
-            messageArea2.appendText("Input must be a double \n");
+            messageArea2.appendText("Input must be a number \n");
             return false;
         }
     }
@@ -278,11 +278,11 @@ public class MainController {
             return true;
         }
         catch (InputMismatchException e){
-            messageArea2.appendText("Input must be an integer \n");
+            messageArea2.appendText("Input must be a number \n");
             return false;
         }
         catch (NumberFormatException e){
-            messageArea2.appendText("Input must be an double \n");
+            messageArea2.appendText("Input must be a number \n");
             return false;
         }
     }
@@ -316,7 +316,7 @@ public class MainController {
             return true;
         }
         catch (NumberFormatException e){
-            messageArea1.appendText("Input must be an integer \n");
+            messageArea1.appendText("Input must be a number \n");
             return false;
         }
     }
