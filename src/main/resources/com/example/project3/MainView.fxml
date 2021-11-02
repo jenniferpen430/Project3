@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project3.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project3.MainController">
     <center>
         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -19,7 +29,7 @@
                                 <RadioButton fx:id="itID" layoutX="256.0" layoutY="61.0" mnemonicParsing="false" text="IT" toggleGroup="$majors" />
                                 <RadioButton fx:id="eceID" layoutX="308.0" layoutY="61.0" mnemonicParsing="false" text="EE" toggleGroup="$majors" />
                                 <Text layoutX="71.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.803401947021484" />
-                                <Text layoutX="66.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" />
+                                <Text layoutX="66.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Major" />
                                 <TextField fx:id="name" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" promptText="Enter a student name here..." />
                                 <RadioButton fx:id="tristateID" disable="true" layoutX="195.0" layoutY="150.0" mnemonicParsing="false" onAction="#tristateButtonClick" text="Tristate">
                            <toggleGroup>
@@ -51,7 +61,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="pfTab" text="Payments/Financial Aid">
+                <Tab text="Payments/Financial Aid">
                     <content>
                         <AnchorPane fx:id="paymentDateID" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>

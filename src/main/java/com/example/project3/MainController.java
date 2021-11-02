@@ -4,9 +4,15 @@ import java.util.InputMismatchException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.input.MouseEvent;
+
 
 import javafx.stage.Stage;
 
@@ -22,49 +28,17 @@ public class MainController {
     private RadioButton NYID;
 
     @FXML
-    private Button addButton;
-
-    @FXML
-    private RadioButton baID;
-
-    @FXML
-    private RadioButton baIDpayment;
-
-    @FXML
-    private Button payButton;
-
-    @FXML
     private TextField creditHours;
 
-    @FXML
-    private RadioButton csID;
-
-    @FXML
-    private RadioButton csIDpayment;
 
     @FXML
     private RadioButton ctID;
-
-    @FXML
-    private RadioButton eceID;
-
-    @FXML
-    private RadioButton eeIDpayment;
 
     @FXML
     private TextField finAidID;
 
     @FXML
     private RadioButton internationalID;
-
-    @FXML
-    private RadioButton itID;
-
-    @FXML
-    private Button finAidSet;
-
-    @FXML
-    private RadioButton itIDpayment;
 
     @FXML
     private ToggleGroup areaIn;
@@ -74,12 +48,6 @@ public class MainController {
 
     @FXML
     private ToggleGroup majorsPayment;
-
-    @FXML
-    private RadioButton meID;
-
-    @FXML
-    private RadioButton meIDpayment;
 
     @FXML
     private TextArea messageArea1, messageArea2, messageArea3;
@@ -97,12 +65,6 @@ public class MainController {
     private DatePicker paymentDate;
 
     @FXML
-    private AnchorPane paymentDateID;
-
-    @FXML
-    private Button removeButton;
-
-    @FXML
     private RadioButton residentID;
 
     @FXML
@@ -116,9 +78,6 @@ public class MainController {
 
     @FXML
     private RadioButton tristateID;
-
-    @FXML
-    private TextField tuition;
 
     @FXML
     private TextField namePayment;
@@ -143,8 +102,6 @@ public class MainController {
             messageArea1.appendText("Missing major \n");
             return false;
         }
-        String dept = major.getText();
-
 
         RadioButton resOrNr = (RadioButton) status.getSelectedToggle();
         if(status.getSelectedToggle() == null){
@@ -164,8 +121,6 @@ public class MainController {
                 RadioButton locations = (RadioButton) areaIn.getSelectedToggle();
                 String locationText = locations.getText();
                 if (locationText.equals("Tristate")) {
-                    RadioButton states = (RadioButton) state.getSelectedToggle();
-                    //String stateText = states.getText();
                     if (state.getSelectedToggle() == null) {
                         messageArea1.appendText("Missing State \n");
                         return false;
@@ -186,7 +141,6 @@ public class MainController {
                     return true;
                 }
                 return true;
-                //
             }
         }
         else if(statusText.equals("Resident")){
