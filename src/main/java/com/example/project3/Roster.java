@@ -116,6 +116,7 @@ public class Roster {
 
     /**
      * If the Roster is not empty, prints the full string representation of each Student.
+     * @return String of names
      */
     public String print(){
         if( isEmpty() ){
@@ -149,6 +150,7 @@ public class Roster {
 
     /**
      * Prints the full string representation of each Student in the Roster.
+     * @return String of names in alphabetical order
      */
     public String printByName(){
         if( isEmpty() ){
@@ -180,8 +182,9 @@ public class Roster {
     }
 
     /**
-     * Prints the full string representation of each Student object in the order in which their last payments were
+     * Returns the full string representation of each Student object in the order in which their last payments were
      * made.
+     * @return String of names of students who have paid, in the order in which they paid
      */
     public String printByDate(){
         if( isEmpty() ){
