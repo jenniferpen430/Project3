@@ -397,6 +397,8 @@ public class MainController {
         tristateID.setDisable(true);
         internationalID.setDisable(true);
         studyabroad.setDisable(true);
+        NYID.setDisable(true);
+        ctID.setDisable(true);
     }
     @FXML
     /**
@@ -437,7 +439,10 @@ public class MainController {
         if( dataCheckerTab2() ){
             if(paymentDate.getValue() == null ){
                 messageArea2.appendText("Missing payment date \n");
-            }else {
+            } else if(paymentAmountID.getText().isEmpty()){
+                messageArea2.appendText("Missing payment amount \n");
+            }
+            else {
                 String[] dateArray = paymentDate.getValue().toString().split("-");
                 String preDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
                 Date postDate = new Date(preDate);
