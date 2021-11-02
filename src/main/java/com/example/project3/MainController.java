@@ -380,6 +380,9 @@ public class MainController {
         }
     }
 
+    /**
+     * This method is used to set buttons to default values.
+     */
     void clearAll(){
         residentID.setSelected(false);
         nonresidentID.setSelected(false);
@@ -474,6 +477,7 @@ public class MainController {
             if ( aidChecker(student) ) {
                 double aidAmount = Double.parseDouble(finAidID.getText());
                 student.applyAid(aidAmount);
+                student.setFinAidApplied(true);
                 messageArea2.appendText("Tuition updated.\n");
             }
         }
@@ -549,6 +553,10 @@ public class MainController {
     }
 
     @FXML
+    /**
+     * setStudyAbroad is used to first check if there is a student, if so whether the student can be made
+     * a study abroad student, then set them as such.
+     */
     void setStudyAbroad(ActionEvent event){
         String nameText = name.getText();
         RadioButton major = (RadioButton) majors.getSelectedToggle();
@@ -603,7 +611,7 @@ public class MainController {
             String printName = roster.printByName();
             messageArea3.appendText(printName);
         } else {
-            messageArea3.appendText("student roster is empty.\n");
+            messageArea3.appendText("Student roster is empty.\n");
         }
     }
 
@@ -619,7 +627,7 @@ public class MainController {
             String printDate = roster.printByDate();
             messageArea3.appendText(printDate);
         } else {
-            messageArea3.appendText("student roster is empty.\n");
+            messageArea3.appendText("Student roster is empty.\n");
         }
     }
 

@@ -97,6 +97,14 @@ public class Student {
         balance -= paymentAmount;
     }
 
+    /**
+     * Sets finAidApplied instance variable to value passed.
+     * @param applied
+     */
+    public void setFinAidApplied(boolean applied){
+        finAidApplied = applied;
+    }
+
 
     /**
      * Returns integer representing the status of this Student based on its number of credit hours.
